@@ -135,30 +135,50 @@ public class ReportExporter {
         content.append("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
         content.append("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
 
-        // Page content with watermark
+        // Page content with enhanced watermark and logo
         StringBuilder pageContent = new StringBuilder();
 
-        // Add watermark logo (simplified representation)
+        // Add large watermark logo (enhanced representation)
         pageContent.append("q\n"); // Save graphics state
-        pageContent.append("0.1 0 0 0.1 0 0 cm\n"); // Scale for watermark
+        pageContent.append("0.8 0 0 0.8 50 200 cm\n"); // Scale and position for large watermark
         pageContent.append("BT\n");
-        pageContent.append("/F1 200 Tf\n");
-        pageContent.append("0.9 0.9 0.9 rg\n"); // Light gray color for watermark
-        pageContent.append("100 400 Td\n");
-        pageContent.append("(MEDISYS) Tj\n");
+        pageContent.append("/F1 120 Tf\n");
+        pageContent.append("0.95 0.95 0.95 rg\n"); // Very light gray color for watermark
+        pageContent.append("50 300 Td\n");
+        pageContent.append("(🏥 MEDISYS) Tj\n");
+        pageContent.append("0 -40 Td\n");
+        pageContent.append("/F1 60 Tf\n");
+        pageContent.append("(HOSPITAL MANAGEMENT) Tj\n");
         pageContent.append("ET\n");
         pageContent.append("Q\n"); // Restore graphics state
 
-        // Header with logo and title
+        // Add diagonal watermark
+        pageContent.append("q\n");
+        pageContent.append("0.9 0.9 0.9 rg\n");
+        pageContent.append("1 0 0 1 200 400 cm\n"); // Position
+        pageContent.append("0.707 0.707 -0.707 0.707 0 0 cm\n"); // Rotate 45 degrees
         pageContent.append("BT\n");
-        pageContent.append("/F1 20 Tf\n");
-        pageContent.append("0 0 0.8 rg\n"); // Blue color
+        pageContent.append("/F1 80 Tf\n");
+        pageContent.append("0 0 Td\n");
+        pageContent.append("(MEDISYS) Tj\n");
+        pageContent.append("ET\n");
+        pageContent.append("Q\n");
+
+        // Header with logo and banner
+        pageContent.append("BT\n");
+        pageContent.append("/F1 24 Tf\n");
+        pageContent.append("0.1 0.3 0.6 rg\n"); // Professional blue color
         pageContent.append("50 750 Td\n");
         pageContent.append("(🏥 MEDISYS HOSPITAL MANAGEMENT SYSTEM) Tj\n");
-        pageContent.append("0 -30 Td\n");
-        pageContent.append("/F1 14 Tf\n");
-        pageContent.append("0 0 0 rg\n"); // Black color
+        pageContent.append("0 -25 Td\n");
+        pageContent.append("/F1 12 Tf\n");
+        pageContent.append("0.2 0.4 0.7 rg\n"); // Lighter blue
         pageContent.append("(Professional Healthcare Management Solution) Tj\n");
+        pageContent.append("0 -15 Td\n");
+        pageContent.append("0.3 0.3 0.3 rg\n"); // Dark gray
+        pageContent.append("(📍 123 Medical Center Drive, Healthcare City | 📞 +91-1234567890 | 📧 admin@medisys.com) Tj\n");
+        pageContent.append("0 -10 Td\n");
+        pageContent.append("(🌐 www.medisys.com | 🏥 24/7 Emergency Services Available) Tj\n");
 
         // Report details section
         pageContent.append("0 -40 Td\n");

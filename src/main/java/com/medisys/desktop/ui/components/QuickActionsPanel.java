@@ -2,6 +2,9 @@ package com.medisys.desktop.ui.components;
 
 import com.medisys.desktop.model.User;
 import com.medisys.desktop.ui.forms.AppointmentForm;
+import com.medisys.desktop.ui.forms.PatientRegistrationForm;
+import com.medisys.desktop.ui.forms.DoctorRegistrationForm;
+import com.medisys.desktop.ui.forms.EmergencyAdmissionForm;
 import com.medisys.desktop.utils.ReportExporter;
 import com.medisys.desktop.utils.IconLibrary;
 import javafx.collections.FXCollections;
@@ -142,19 +145,35 @@ public class QuickActionsPanel {
     
     // Quick Action Methods
     private void quickAddPatient() {
-        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-        dialog.setTitle("Quick Add Patient");
-        dialog.setHeaderText("Patient Registration");
-        dialog.setContentText("Quick patient registration form will open here.\n\nFeatures:\n• Fast data entry\n• Essential fields only\n• Photo capture\n• Insurance verification\n• Immediate ID generation");
-        dialog.showAndWait();
+        try {
+            PatientRegistrationForm patientForm = new PatientRegistrationForm(null, patient -> {
+                // Handle patient save - could integrate with actual patient service
+                System.out.println("Patient registered: " + patient.getFirstName() + " " + patient.getLastName());
+            });
+            patientForm.show();
+        } catch (Exception e) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setTitle("Error");
+            error.setHeaderText("Failed to open patient registration form");
+            error.setContentText("Error: " + e.getMessage());
+            error.showAndWait();
+        }
     }
-    
+
     private void quickAddDoctor() {
-        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-        dialog.setTitle("Quick Add Doctor");
-        dialog.setHeaderText("Doctor Registration");
-        dialog.setContentText("Quick doctor registration form will open here.\n\nFeatures:\n• Professional details\n• Specialization setup\n• Schedule configuration\n• Credential verification\n• Department assignment");
-        dialog.showAndWait();
+        try {
+            DoctorRegistrationForm doctorForm = new DoctorRegistrationForm(null, doctor -> {
+                // Handle doctor save - could integrate with actual doctor service
+                System.out.println("Doctor registered: Dr. " + doctor.getFirstName() + " " + doctor.getLastName());
+            });
+            doctorForm.show();
+        } catch (Exception e) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setTitle("Error");
+            error.setHeaderText("Failed to open doctor registration form");
+            error.setContentText("Error: " + e.getMessage());
+            error.showAndWait();
+        }
     }
     
     private void quickScheduleAppointment() {
@@ -276,21 +295,19 @@ public class QuickActionsPanel {
     
     // Emergency Actions
     private void quickEmergencyAdmission() {
-        Alert emergency = new Alert(Alert.AlertType.WARNING);
-        emergency.setTitle("Emergency Admission");
-        emergency.setHeaderText("🚨 EMERGENCY PROTOCOL ACTIVATED");
-        emergency.setContentText("Emergency admission process initiated.\n\n" +
-            "✅ Actions taken:\n" +
-            "• Emergency bed reserved\n" +
-            "• On-call doctor notified\n" +
-            "• Emergency team alerted\n" +
-            "• Fast-track registration ready\n\n" +
-            "Next steps:\n" +
-            "1. Complete patient registration\n" +
-            "2. Assign emergency bed\n" +
-            "3. Contact emergency contact\n" +
-            "4. Prepare medical history");
-        emergency.showAndWait();
+        try {
+            EmergencyAdmissionForm emergencyForm = new EmergencyAdmissionForm(() -> {
+                // Handle emergency admission save - could integrate with actual emergency service
+                System.out.println("Emergency admission processed successfully");
+            });
+            emergencyForm.show();
+        } catch (Exception e) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setTitle("Error");
+            error.setHeaderText("Failed to open emergency admission form");
+            error.setContentText("Error: " + e.getMessage());
+            error.showAndWait();
+        }
     }
     
     private void quickCallDoctor() {
