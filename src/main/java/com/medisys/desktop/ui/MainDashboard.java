@@ -35,6 +35,7 @@ public class MainDashboard {
     private AppointmentsModule appointmentsModule;
     private FinanceModule financeModule;
     private ReportsModule reportsModule;
+    private HelpModule helpModule;
     private UserManagementModule userManagementModule;
     
     public MainDashboard(MediSysApp app, User currentUser) {
@@ -56,7 +57,8 @@ public class MainDashboard {
         appointmentsModule = new AppointmentsModule(currentUser);
         financeModule = new FinanceModule(currentUser);
         reportsModule = new ReportsModule(currentUser);
-        
+        helpModule = new HelpModule(currentUser);
+
         // User Management only for admin
         if ("admin".equals(currentUser.getRole())) {
             userManagementModule = new UserManagementModule(currentUser);
@@ -201,7 +203,10 @@ public class MainDashboard {
         
         Button reportsBtn = createNavButton("📈", "Reports");
         navigation.getChildren().add(reportsBtn);
-        
+
+        Button helpBtn = createNavButton("❓", "Help");
+        navigation.getChildren().add(helpBtn);
+
         // Admin-only features
         if ("admin".equals(currentUser.getRole())) {
             Separator separator = new Separator();
@@ -218,7 +223,8 @@ public class MainDashboard {
         doctorsBtn.setOnAction(e -> showDoctors());
         appointmentsBtn.setOnAction(e -> showAppointments());
         reportsBtn.setOnAction(e -> showReports());
-        
+        helpBtn.setOnAction(e -> showHelp());
+
         return navigation;
     }
     
@@ -278,7 +284,11 @@ public class MainDashboard {
     private void showReports() {
         switchContent(reportsModule.getRoot(), "Reports");
     }
-    
+
+    private void showHelp() {
+        switchContent(helpModule.getRoot(), "Help & Documentation");
+    }
+
     private void showUserManagement() {
         if (userManagementModule != null) {
             switchContent(userManagementModule.getRoot(), "User Management");

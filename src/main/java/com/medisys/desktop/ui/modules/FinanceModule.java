@@ -238,10 +238,8 @@ public class FinanceModule {
             private final HBox actionBox = new HBox(5);
 
             {
-                viewBtn.getStyleClass().add("secondary-button");
-                viewBtn.setStyle("-fx-font-size: 10px; -fx-padding: 4 8 4 8;");
-                payBtn.getStyleClass().add("success-button");
-                payBtn.setStyle("-fx-font-size: 10px; -fx-padding: 4 8 4 8;");
+                viewBtn.getStyleClass().addAll("action-button", "edit");
+                payBtn.getStyleClass().addAll("action-button", "edit");
                 actionBox.getChildren().addAll(viewBtn, payBtn);
                 actionBox.setAlignment(Pos.CENTER);
             }
