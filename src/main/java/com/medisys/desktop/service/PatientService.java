@@ -23,7 +23,7 @@ public class PatientService {
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
             ps.setString(1, patient.getName());
-            ps.setString(2, patient.getDateOfBirth());
+            ps.setDate(2, patient.getDateOfBirth() != null ? java.sql.Date.valueOf(patient.getDateOfBirth()) : null);
             ps.setString(3, patient.getContactInfo());
             return ps;
         }, keyHolder);
@@ -40,7 +40,10 @@ public class PatientService {
             Patient p = new Patient();
             p.setId(rs.getLong("id"));
             p.setName(rs.getString("name"));
-            p.setDateOfBirth(rs.getString("date_of_birth"));
+            java.sql.Date sqlDate = rs.getDate("date_of_birth");
+            if (sqlDate != null) {
+                p.setDateOfBirth(sqlDate.toLocalDate());
+            }
             p.setContactInfo(rs.getString("contact_info"));
             return p;
         });
@@ -55,7 +58,10 @@ public class PatientService {
             Patient p = new Patient();
             p.setId(rs.getLong("id"));
             p.setName(rs.getString("name"));
-            p.setDateOfBirth(rs.getString("date_of_birth"));
+            java.sql.Date sqlDate = rs.getDate("date_of_birth");
+            if (sqlDate != null) {
+                p.setDateOfBirth(sqlDate.toLocalDate());
+            }
             p.setContactInfo(rs.getString("contact_info"));
             return p;
         });
@@ -66,7 +72,9 @@ public class PatientService {
 
     public void updatePatient(Patient patient, Long userId) {
         String sql = "UPDATE patients SET name = ?, date_of_birth = ?, contact_info = ? WHERE id = ?";
-        jdbcTemplate.update(sql, patient.getName(), patient.getDateOfBirth(), patient.getContactInfo(), patient.getId());
+        jdbcTemplate.update(sql, patient.getName(),
+            patient.getDateOfBirth() != null ? java.sql.Date.valueOf(patient.getDateOfBirth()) : null,
+            patient.getContactInfo(), patient.getId());
         auditService.logAction(userId, "UPDATE_PATIENT", "Patient", patient.getId());
     }
 

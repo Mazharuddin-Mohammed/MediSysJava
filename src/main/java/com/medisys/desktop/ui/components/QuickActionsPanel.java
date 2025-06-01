@@ -5,6 +5,7 @@ import com.medisys.desktop.ui.forms.AppointmentForm;
 import com.medisys.desktop.ui.forms.PatientRegistrationForm;
 import com.medisys.desktop.ui.forms.DoctorRegistrationForm;
 import com.medisys.desktop.ui.forms.EmergencyAdmissionForm;
+import com.medisys.desktop.ui.forms.BillingForm;
 import com.medisys.desktop.utils.ReportExporter;
 import com.medisys.desktop.utils.IconLibrary;
 import javafx.collections.FXCollections;
@@ -194,11 +195,19 @@ public class QuickActionsPanel {
     }
     
     private void quickCreateBill() {
-        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-        dialog.setTitle("Quick Create Bill");
-        dialog.setHeaderText("Billing System");
-        dialog.setContentText("Quick billing form will open here.\n\nFeatures:\n• Patient selection\n• Service items\n• Insurance processing\n• Payment methods\n• Instant invoice generation");
-        dialog.showAndWait();
+        try {
+            BillingForm billingForm = new BillingForm(() -> {
+                // Handle billing save - could integrate with actual billing service
+                System.out.println("Bill generated successfully");
+            });
+            billingForm.show();
+        } catch (Exception e) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setTitle("Error");
+            error.setHeaderText("Failed to open billing form");
+            error.setContentText("Error: " + e.getMessage());
+            error.showAndWait();
+        }
     }
     
     private void quickGenerateReport() {
