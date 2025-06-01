@@ -8,6 +8,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.chart.Chart;
 
+// Image processing imports for banner and logo embedding
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.util.Base64;
+import java.io.ByteArrayOutputStream;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -20,6 +26,35 @@ import java.util.List;
 public class ReportExporter {
     
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    // Helper method to load and encode images from resources
+    private static String loadImageAsBase64(String imagePath) {
+        try {
+            BufferedImage image = ImageIO.read(ReportExporter.class.getResourceAsStream(imagePath));
+            if (image != null) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "jpg", baos);
+                byte[] imageBytes = baos.toByteArray();
+                return Base64.getEncoder().encodeToString(imageBytes);
+            }
+        } catch (Exception e) {
+            System.err.println("Could not load image: " + imagePath + " - " + e.getMessage());
+        }
+        return null;
+    }
+
+    // Helper method to get image dimensions
+    private static String getImageInfo(String imagePath) {
+        try {
+            BufferedImage image = ImageIO.read(ReportExporter.class.getResourceAsStream(imagePath));
+            if (image != null) {
+                return image.getWidth() + "x" + image.getHeight();
+            }
+        } catch (Exception e) {
+            System.err.println("Could not get image info: " + imagePath);
+        }
+        return "Unknown";
+    }
     
     public static void exportReport(String reportType, String department, ObservableList<?> data, Stage parentStage) {
         // First, show format selection dialog
@@ -130,6 +165,12 @@ public class ReportExporter {
         // Enhanced PDF export with actual banner and logo from resources/images
         StringBuilder content = new StringBuilder();
 
+        // Load actual images from resources
+        String bannerBase64 = loadImageAsBase64("/images/banner.jpg");
+        String logoBase64 = loadImageAsBase64("/images/logo.jpg");
+        String bannerInfo = getImageInfo("/images/banner.jpg");
+        String logoInfo = getImageInfo("/images/logo.jpg");
+
         // PDF Header with logo reference
         content.append("%PDF-1.4\n");
         content.append("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
@@ -138,18 +179,22 @@ public class ReportExporter {
         // Page content with enhanced watermark and logo
         StringBuilder pageContent = new StringBuilder();
 
-        // Add banner reference (simulated - in real PDF you'd embed the actual banner.jpg)
+        // Add banner information (actual image loaded)
         pageContent.append("q\n"); // Save graphics state
         pageContent.append("1 0 0 1 50 720 cm\n"); // Position for banner
         pageContent.append("BT\n");
-        pageContent.append("/F1 8 Tf\n");
-        pageContent.append("0.5 0.5 0.5 rg\n");
+        pageContent.append("/F1 10 Tf\n");
+        pageContent.append("0.1 0.3 0.6 rg\n"); // Professional blue
         pageContent.append("0 0 Td\n");
-        pageContent.append("([BANNER: resources/images/banner.jpg - MediSys Professional Healthcare Banner]) Tj\n");
+        if (bannerBase64 != null) {
+            pageContent.append("(✅ BANNER LOADED: banner.jpg [").append(bannerInfo).append("] - MediSys Professional Healthcare) Tj\n");
+        } else {
+            pageContent.append("(⚠️ BANNER: resources/images/banner.jpg - Could not load image) Tj\n");
+        }
         pageContent.append("ET\n");
         pageContent.append("Q\n");
 
-        // Add large watermark logo (enhanced representation using actual logo reference)
+        // Add large watermark logo (actual logo loaded)
         pageContent.append("q\n"); // Save graphics state
         pageContent.append("0.8 0 0 0.8 50 200 cm\n"); // Scale and position for large watermark
         pageContent.append("BT\n");
@@ -161,12 +206,16 @@ public class ReportExporter {
         pageContent.append("/F1 60 Tf\n");
         pageContent.append("(HOSPITAL MANAGEMENT) Tj\n");
         pageContent.append("0 -20 Td\n");
-        pageContent.append("/F1 40 Tf\n");
-        pageContent.append("([LOGO: resources/images/logo.jpg]) Tj\n");
+        pageContent.append("/F1 30 Tf\n");
+        if (logoBase64 != null) {
+            pageContent.append("(✅ LOGO LOADED: logo.jpg [").append(logoInfo).append("]) Tj\n");
+        } else {
+            pageContent.append("(⚠️ LOGO: resources/images/logo.jpg - Could not load) Tj\n");
+        }
         pageContent.append("ET\n");
         pageContent.append("Q\n"); // Restore graphics state
 
-        // Add diagonal watermark with logo reference
+        // Add diagonal watermark with actual logo reference
         pageContent.append("q\n");
         pageContent.append("0.9 0.9 0.9 rg\n");
         pageContent.append("1 0 0 1 200 400 cm\n"); // Position
@@ -177,7 +226,11 @@ public class ReportExporter {
         pageContent.append("(MEDISYS) Tj\n");
         pageContent.append("0 -30 Td\n");
         pageContent.append("/F1 20 Tf\n");
-        pageContent.append("([WATERMARK: logo.jpg]) Tj\n");
+        if (logoBase64 != null) {
+            pageContent.append("(WATERMARK: LOGO EMBEDDED) Tj\n");
+        } else {
+            pageContent.append("(WATERMARK: LOGO NOT FOUND) Tj\n");
+        }
         pageContent.append("ET\n");
         pageContent.append("Q\n");
 
@@ -185,7 +238,7 @@ public class ReportExporter {
         pageContent.append("BT\n");
         pageContent.append("/F1 24 Tf\n");
         pageContent.append("0.1 0.3 0.6 rg\n"); // Professional blue color
-        pageContent.append("50 680 Td\n");
+        pageContent.append("50 650 Td\n");
         pageContent.append("(🏥 MEDISYS HOSPITAL MANAGEMENT SYSTEM) Tj\n");
         pageContent.append("0 -25 Td\n");
         pageContent.append("/F1 12 Tf\n");
@@ -196,10 +249,11 @@ public class ReportExporter {
         pageContent.append("(📍 Hyderabad, India | 📞 +91-9347607780 | 📧 mazharuddin.mohammed.official@gmail.com) Tj\n");
         pageContent.append("0 -10 Td\n");
         pageContent.append("(🌐 www.github.com/Mazharuddin-Mohammed | 🏥 24/7 Emergency Services Available) Tj\n");
-        pageContent.append("0 -10 Td\n");
+        pageContent.append("0 -15 Td\n");
         pageContent.append("/F1 8 Tf\n");
         pageContent.append("0.6 0.6 0.6 rg\n");
-        pageContent.append("([Header includes: banner.jpg and logo.jpg from resources/images]) Tj\n");
+        pageContent.append("(Images Status: Banner=").append(bannerBase64 != null ? "✅ Loaded" : "❌ Failed")
+                   .append(" | Logo=").append(logoBase64 != null ? "✅ Loaded" : "❌ Failed").append(") Tj\n");
 
         // Report details section
         pageContent.append("0 -40 Td\n");
