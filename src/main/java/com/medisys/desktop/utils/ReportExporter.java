@@ -8,11 +8,21 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.chart.Chart;
 
+// PDFBox imports for proper PDF generation with image embedding
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState;
+
 // Image processing imports for banner and logo embedding
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.util.Base64;
 import java.io.ByteArrayOutputStream;
+import java.awt.Color;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -162,184 +172,155 @@ public class ReportExporter {
     }
     
     private static void exportToPDF(String reportType, String department, ObservableList<?> data, File file) throws IOException {
-        // Enhanced PDF export with actual banner and logo from resources/images
-        StringBuilder content = new StringBuilder();
+        // Create PDF document using PDFBox with actual image embedding
+        try (PDDocument document = new PDDocument()) {
+            PDPage page = new PDPage(PDRectangle.A4);
+            document.addPage(page);
 
-        // Load actual images from resources
-        String bannerBase64 = loadImageAsBase64("/images/banner.jpg");
-        String logoBase64 = loadImageAsBase64("/images/logo.jpg");
-        String bannerInfo = getImageInfo("/images/banner.jpg");
-        String logoInfo = getImageInfo("/images/logo.jpg");
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                float pageWidth = page.getMediaBox().getWidth();
+                float pageHeight = page.getMediaBox().getHeight();
+                float margin = 50;
+                float yPosition = pageHeight - margin;
 
-        // PDF Header with logo reference
-        content.append("%PDF-1.4\n");
-        content.append("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
-        content.append("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+                // Try to load and embed banner image
+                try {
+                    InputStream bannerStream = ReportExporter.class.getResourceAsStream("/images/banner.jpg");
+                    if (bannerStream != null) {
+                        PDImageXObject bannerPDImage = PDImageXObject.createFromByteArray(document,
+                            bannerStream.readAllBytes(), "banner");
 
-        // Page content with enhanced watermark and logo
-        StringBuilder pageContent = new StringBuilder();
+                        // Draw banner at top of page
+                        float bannerWidth = pageWidth - (2 * margin);
+                        float bannerHeight = 80;
+                        contentStream.drawImage(bannerPDImage, margin, yPosition - bannerHeight, bannerWidth, bannerHeight);
+                        yPosition -= (bannerHeight + 20);
 
-        // Add banner information (actual image loaded)
-        pageContent.append("q\n"); // Save graphics state
-        pageContent.append("1 0 0 1 50 720 cm\n"); // Position for banner
-        pageContent.append("BT\n");
-        pageContent.append("/F1 10 Tf\n");
-        pageContent.append("0.1 0.3 0.6 rg\n"); // Professional blue
-        pageContent.append("0 0 Td\n");
-        if (bannerBase64 != null) {
-            pageContent.append("(✅ BANNER LOADED: banner.jpg [").append(bannerInfo).append("] - MediSys Professional Healthcare) Tj\n");
-        } else {
-            pageContent.append("(⚠️ BANNER: resources/images/banner.jpg - Could not load image) Tj\n");
-        }
-        pageContent.append("ET\n");
-        pageContent.append("Q\n");
+                        System.out.println("✅ Banner image embedded successfully");
+                        bannerStream.close();
+                    }
+                } catch (Exception e) {
+                    System.err.println("❌ Could not embed banner image: " + e.getMessage());
+                    // Draw banner placeholder
+                    contentStream.setNonStrokingColor(37, 99, 235); // Blue color
+                    contentStream.addRect(margin, yPosition - 80, pageWidth - (2 * margin), 80);
+                    contentStream.fill();
 
-        // Add large watermark logo (actual logo loaded)
-        pageContent.append("q\n"); // Save graphics state
-        pageContent.append("0.8 0 0 0.8 50 200 cm\n"); // Scale and position for large watermark
-        pageContent.append("BT\n");
-        pageContent.append("/F1 120 Tf\n");
-        pageContent.append("0.95 0.95 0.95 rg\n"); // Very light gray color for watermark
-        pageContent.append("50 300 Td\n");
-        pageContent.append("(🏥 MEDISYS) Tj\n");
-        pageContent.append("0 -40 Td\n");
-        pageContent.append("/F1 60 Tf\n");
-        pageContent.append("(HOSPITAL MANAGEMENT) Tj\n");
-        pageContent.append("0 -20 Td\n");
-        pageContent.append("/F1 30 Tf\n");
-        if (logoBase64 != null) {
-            pageContent.append("(✅ LOGO LOADED: logo.jpg [").append(logoInfo).append("]) Tj\n");
-        } else {
-            pageContent.append("(⚠️ LOGO: resources/images/logo.jpg - Could not load) Tj\n");
-        }
-        pageContent.append("ET\n");
-        pageContent.append("Q\n"); // Restore graphics state
+                    contentStream.beginText();
+                    contentStream.setFont(PDType1Font.HELVETICA_BOLD, 24);
+                    contentStream.setNonStrokingColor(255, 255, 255); // White text
+                    contentStream.newLineAtOffset(margin + 20, yPosition - 50);
+                    contentStream.showText("🏥 MEDISYS HOSPITAL MANAGEMENT SYSTEM");
+                    contentStream.endText();
+                    yPosition -= 100;
+                }
 
-        // Add diagonal watermark with actual logo reference
-        pageContent.append("q\n");
-        pageContent.append("0.9 0.9 0.9 rg\n");
-        pageContent.append("1 0 0 1 200 400 cm\n"); // Position
-        pageContent.append("0.707 0.707 -0.707 0.707 0 0 cm\n"); // Rotate 45 degrees
-        pageContent.append("BT\n");
-        pageContent.append("/F1 80 Tf\n");
-        pageContent.append("0 0 Td\n");
-        pageContent.append("(MEDISYS) Tj\n");
-        pageContent.append("0 -30 Td\n");
-        pageContent.append("/F1 20 Tf\n");
-        if (logoBase64 != null) {
-            pageContent.append("(WATERMARK: LOGO EMBEDDED) Tj\n");
-        } else {
-            pageContent.append("(WATERMARK: LOGO NOT FOUND) Tj\n");
-        }
-        pageContent.append("ET\n");
-        pageContent.append("Q\n");
+                // Try to load and embed logo as watermark
+                try {
+                    InputStream logoStream = ReportExporter.class.getResourceAsStream("/images/logo.jpg");
+                    if (logoStream != null) {
+                        PDImageXObject logoPDImage = PDImageXObject.createFromByteArray(document,
+                            logoStream.readAllBytes(), "logo");
 
-        // Header with logo and banner references
-        pageContent.append("BT\n");
-        pageContent.append("/F1 24 Tf\n");
-        pageContent.append("0.1 0.3 0.6 rg\n"); // Professional blue color
-        pageContent.append("50 650 Td\n");
-        pageContent.append("(🏥 MEDISYS HOSPITAL MANAGEMENT SYSTEM) Tj\n");
-        pageContent.append("0 -25 Td\n");
-        pageContent.append("/F1 12 Tf\n");
-        pageContent.append("0.2 0.4 0.7 rg\n"); // Lighter blue
-        pageContent.append("(Professional Healthcare Management Solution) Tj\n");
-        pageContent.append("0 -15 Td\n");
-        pageContent.append("0.3 0.3 0.3 rg\n"); // Dark gray
-        pageContent.append("(📍 Hyderabad, India | 📞 +91-9347607780 | 📧 mazharuddin.mohammed.official@gmail.com) Tj\n");
-        pageContent.append("0 -10 Td\n");
-        pageContent.append("(🌐 www.github.com/Mazharuddin-Mohammed | 🏥 24/7 Emergency Services Available) Tj\n");
-        pageContent.append("0 -15 Td\n");
-        pageContent.append("/F1 8 Tf\n");
-        pageContent.append("0.6 0.6 0.6 rg\n");
-        pageContent.append("(Images Status: Banner=").append(bannerBase64 != null ? "✅ Loaded" : "❌ Failed")
-                   .append(" | Logo=").append(logoBase64 != null ? "✅ Loaded" : "❌ Failed").append(") Tj\n");
+                        // Create watermark with transparency
+                        PDExtendedGraphicsState graphicsState = new PDExtendedGraphicsState();
+                        graphicsState.setNonStrokingAlphaConstant(0.1f); // 10% opacity
+                        contentStream.setGraphicsStateParameters(graphicsState);
 
-        // Report details section
-        pageContent.append("0 -40 Td\n");
-        pageContent.append("/F1 16 Tf\n");
-        pageContent.append("0.2 0.2 0.2 rg\n");
-        pageContent.append("(").append(reportType).append(") Tj\n");
+                        // Draw logo watermark in center
+                        float logoSize = 200;
+                        float logoX = (pageWidth - logoSize) / 2;
+                        float logoY = (pageHeight - logoSize) / 2;
+                        contentStream.drawImage(logoPDImage, logoX, logoY, logoSize, logoSize);
 
-        pageContent.append("0 -25 Td\n");
-        pageContent.append("/F1 12 Tf\n");
-        pageContent.append("(Department: ").append(department != null ? department : "All Departments").append(") Tj\n");
+                        // Reset graphics state
+                        graphicsState.setNonStrokingAlphaConstant(1.0f);
+                        contentStream.setGraphicsStateParameters(graphicsState);
 
-        pageContent.append("0 -15 Td\n");
-        pageContent.append("(Generated: ").append(LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))).append(") Tj\n");
+                        System.out.println("✅ Logo watermark embedded successfully");
+                        logoStream.close();
+                    }
+                } catch (Exception e) {
+                    System.err.println("❌ Could not embed logo watermark: " + e.getMessage());
+                }
 
-        pageContent.append("0 -15 Td\n");
-        pageContent.append("(Total Records: ").append(data.size()).append(") Tj\n");
+                // Add report title and content
+                contentStream.beginText();
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 18);
+                contentStream.setNonStrokingColor(37, 99, 235); // Blue color
+                contentStream.newLineAtOffset(margin, yPosition);
+                contentStream.showText(reportType);
+                contentStream.endText();
+                yPosition -= 30;
 
-        // Data section
-        pageContent.append("0 -30 Td\n");
-        pageContent.append("/F1 14 Tf\n");
-        pageContent.append("0.1 0.1 0.1 rg\n");
-        pageContent.append("(REPORT DATA) Tj\n");
+                // Add department and date info
+                contentStream.beginText();
+                contentStream.setFont(PDType1Font.HELVETICA, 12);
+                contentStream.setNonStrokingColor(0, 0, 0); // Black color
+                contentStream.newLineAtOffset(margin, yPosition);
+                contentStream.showText("Department: " + (department != null ? department : "All Departments"));
+                contentStream.endText();
+                yPosition -= 20;
 
-        pageContent.append("0 -20 Td\n");
-        pageContent.append("/F1 10 Tf\n");
-        pageContent.append("0 0 0 rg\n");
+                contentStream.beginText();
+                contentStream.newLineAtOffset(margin, yPosition);
+                contentStream.showText("Generated: " + LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")));
+                contentStream.endText();
+                yPosition -= 20;
 
-        // Add data with better formatting
-        int yPosition = 0;
-        for (int i = 0; i < Math.min(data.size(), 25); i++) { // Limit to 25 records for first page
-            if (yPosition > 500) break; // Prevent overflow
+                contentStream.beginText();
+                contentStream.newLineAtOffset(margin, yPosition);
+                contentStream.showText("Total Records: " + data.size());
+                contentStream.endText();
+                yPosition -= 40;
 
-            String dataStr = data.get(i).toString();
-            if (dataStr.length() > 80) {
-                dataStr = dataStr.substring(0, 77) + "...";
+                // Add data content
+                contentStream.beginText();
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 14);
+                contentStream.newLineAtOffset(margin, yPosition);
+                contentStream.showText("REPORT DATA");
+                contentStream.endText();
+                yPosition -= 25;
+
+                // Add data rows
+                contentStream.setFont(PDType1Font.HELVETICA, 10);
+                for (int i = 0; i < Math.min(data.size(), 30); i++) {
+                    if (yPosition < 100) break; // Prevent overflow
+
+                    String dataStr = data.get(i).toString();
+                    if (dataStr.length() > 80) {
+                        dataStr = dataStr.substring(0, 77) + "...";
+                    }
+
+                    contentStream.beginText();
+                    contentStream.newLineAtOffset(margin, yPosition);
+                    contentStream.showText((i + 1) + ". " + dataStr);
+                    contentStream.endText();
+                    yPosition -= 15;
+                }
+
+                // Add footer
+                contentStream.beginText();
+                contentStream.setFont(PDType1Font.HELVETICA, 8);
+                contentStream.setNonStrokingColor(128, 128, 128); // Gray color
+                contentStream.newLineAtOffset(margin, 50);
+                contentStream.showText("Report generated by MediSys Hospital Management System");
+                contentStream.endText();
+
+                contentStream.beginText();
+                contentStream.newLineAtOffset(margin, 35);
+                contentStream.showText("Contact: mazharuddin.mohammed.official@gmail.com | Phone: +91-9347607780");
+                contentStream.endText();
+
+                contentStream.beginText();
+                contentStream.newLineAtOffset(margin, 20);
+                contentStream.showText("Developer: Dr. Mazharuddin Mohammed | Location: Hyderabad, India");
+                contentStream.endText();
             }
 
-            pageContent.append("0 -15 Td\n");
-            pageContent.append("(").append(String.format("%2d. ", i + 1))
-                      .append(dataStr.replace("(", "\\(").replace(")", "\\)")).append(") Tj\n");
-            yPosition += 15;
-        }
-
-        if (data.size() > 25) {
-            pageContent.append("0 -20 Td\n");
-            pageContent.append("/F1 10 Tf\n");
-            pageContent.append("0.5 0.5 0.5 rg\n");
-            pageContent.append("(... and ").append(data.size() - 25).append(" more records) Tj\n");
-        }
-
-        // Footer
-        pageContent.append("0 -40 Td\n");
-        pageContent.append("/F1 8 Tf\n");
-        pageContent.append("0.6 0.6 0.6 rg\n");
-        pageContent.append("(Report generated by MediSys Hospital Management System) Tj\n");
-        pageContent.append("0 -12 Td\n");
-        pageContent.append("(Contact: mazharuddin.mohammed.official@gmail.com | Phone: +91-9347607780) Tj\n");
-        pageContent.append("0 -12 Td\n");
-        pageContent.append("(Developer: Dr. Mazharuddin Mohammed | Location: Hyderabad, India) Tj\n");
-        pageContent.append("0 -12 Td\n");
-        pageContent.append("(© 2024 MediSys Healthcare Solutions. All rights reserved.) Tj\n");
-
-        pageContent.append("ET\n");
-
-        // Complete PDF structure
-        content.append("3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n");
-        content.append("4 0 obj\n<< /Length ").append(pageContent.length()).append(" >>\nstream\n");
-        content.append(pageContent);
-        content.append("endstream\nendobj\n");
-        content.append("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n");
-
-        // Cross-reference table
-        content.append("xref\n0 6\n");
-        content.append("0000000000 65535 f \n");
-        content.append("0000000009 00000 n \n");
-        content.append("0000000058 00000 n \n");
-        content.append("0000000115 00000 n \n");
-        content.append("0000000251 00000 n \n");
-        content.append("0000000").append(String.format("%6d", content.length() - 100)).append(" 00000 n \n");
-
-        content.append("trailer\n<< /Size 6 /Root 1 0 R >>\n");
-        content.append("startxref\n").append(content.length() - 50).append("\n%%EOF");
-
-        // Write to file
-        try (FileWriter writer = new FileWriter(file)) {
-            writer.write(content.toString());
+            // Save the document
+            document.save(file);
+            System.out.println("✅ PDF exported successfully with embedded images to: " + file.getAbsolutePath());
         }
     }
     

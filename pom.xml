@@ -87,7 +87,12 @@
             <version>1.18.34</version>
             <optional>true</optional>
         </dependency>
-
+        <!-- Apache PDFBox for proper PDF generation with image embedding -->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.29</version>
+        </dependency>
         <!-- Logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
