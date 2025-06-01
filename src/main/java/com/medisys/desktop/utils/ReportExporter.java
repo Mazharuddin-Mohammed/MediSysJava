@@ -37,6 +37,33 @@ public class ReportExporter {
     
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    // Helper method to filter unsupported characters for PDF
+    private static String filterUnsupportedCharacters(String text) {
+        if (text == null) return "";
+
+        // Replace common problematic characters using Unicode escape sequences
+        return text
+            .replace("\u20B9", "Rs.") // Indian Rupee symbol
+            .replace("\u20AC", "EUR") // Euro symbol
+            .replace("\u00A3", "GBP") // Pound symbol
+            .replace("\u00A5", "JPY") // Yen symbol
+            .replace("\u00A9", "(c)") // Copyright symbol
+            .replace("\u00AE", "(R)") // Registered trademark
+            .replace("\u2122", "(TM)") // Trademark symbol
+            .replace("\u00B0", " deg") // Degree symbol
+            .replace("\u00B1", "+/-") // Plus-minus symbol
+            .replace("\u00D7", "x") // Multiplication symbol
+            .replace("\u00F7", "/") // Division symbol
+            .replace("\u2013", "-") // En dash
+            .replace("\u2014", "-") // Em dash
+            .replace("\u201C", "\"") // Left double quotation mark
+            .replace("\u201D", "\"") // Right double quotation mark
+            .replace("\u2018", "'") // Left single quotation mark
+            .replace("\u2019", "'") // Right single quotation mark
+            .replace("\u2026", "...") // Horizontal ellipsis
+            .replaceAll("[^\\x00-\\x7F]", "?"); // Replace any remaining non-ASCII characters with ?
+    }
+
     // Helper method to load and encode images from resources
     private static String loadImageAsBase64(String imagePath) {
         try {
@@ -291,6 +318,9 @@ public class ReportExporter {
                     if (dataStr.length() > 80) {
                         dataStr = dataStr.substring(0, 77) + "...";
                     }
+
+                    // Filter out unsupported characters for PDF
+                    dataStr = filterUnsupportedCharacters(dataStr);
 
                     contentStream.beginText();
                     contentStream.newLineAtOffset(margin, yPosition);
