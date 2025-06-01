@@ -489,12 +489,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🆘 Support & Contact
 
 ### 👨‍💻 Developer Contact
-- **Developer**: Mazharuddin Mohammed
-- **Email**: mazharuddin.mohammed.official@gmail.com
+- **Developer**: Dr. Mazharuddin Mohammed
+- **Email**: mazharuddin.mohammed.official@fmail.com
 - **Phone**: +91-9347607780
 - **Location**: Hyderabad, India
-- **GitHub**: [github.com/mazharuddin8](https://github.com/mazharuddin8)
-- **LinkedIn**: [linkedin.com/in/mazharuddin-mohammed](https://linkedin.com/in/mazharuddin-mohammed)
+- **GitHub**: [www.github.com/Mazharuddin-Mohammed](https://www.github.com/Mazharuddin-Mohammed)
+- **LinkedIn**: [www.linkedin.com/in/mazharuddin-mohammed](https://www.linkedin.com/in/mazharuddin-mohammed)
 
 ### 🔧 Technical Support
 Available for:

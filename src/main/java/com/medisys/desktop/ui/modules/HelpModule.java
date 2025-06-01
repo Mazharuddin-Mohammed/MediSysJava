@@ -440,12 +440,12 @@ public class HelpModule {
         dialog.setHeaderText("Developer Contact Information");
         dialog.setContentText(
             "For technical support and inquiries, please contact:\n\n" +
-            "👨‍💻 Developer: Mazharuddin Mohammed\n" +
-            "📧 Email: mazharuddin.mohammed.official@gmail.com\n" +
+            "👨‍💻 Developer: Dr. Mazharuddin Mohammed\n" +
+            "📧 Email: mazharuddin.mohammed.official@fmail.com\n" +
             "📞 Phone: +91-9347607780\n" +
             "📍 Location: Hyderabad, India\n\n" +
-            "🌐 GitHub: github.com/mazharuddin8\n" +
-            "💼 LinkedIn: linkedin.com/in/mazharuddin-mohammed\n\n" +
+            "🌐 GitHub: www.github.com/Mazharuddin-Mohammed\n" +
+            "💼 LinkedIn: www.linkedin.com/in/mazharuddin-mohammed\n\n" +
             "Available for:\n" +
             "• Technical Support & Bug Reports\n" +
             "• Feature Requests & Enhancements\n" +
