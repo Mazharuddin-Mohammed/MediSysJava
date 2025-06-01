@@ -65,7 +65,7 @@ public class LoginWindow {
         brandingSide.setAlignment(Pos.CENTER);
         brandingSide.setPadding(new Insets(60));
         brandingSide.setStyle("""
-            -fx-background-color: #1A202C;
+            -fx-background-color: #2563EB;
             """);
         
         // Logo/Icon with actual logo image
@@ -101,7 +101,7 @@ public class LoginWindow {
             logoText.setStyle("""
                 -fx-font-size: 16px;
                 -fx-font-weight: bold;
-                -fx-fill: #3182CE;
+                -fx-fill: #2563EB;
                 """);
 
             logoBox.getChildren().addAll(logoImageView, logoText);
@@ -123,7 +123,7 @@ public class LoginWindow {
             Text crossSymbol = new Text("✚");
             crossSymbol.setStyle("""
                 -fx-font-size: 48px;
-                -fx-fill: #3182CE;
+                -fx-fill: #2563EB;
                 """);
 
             // MediSys text
@@ -131,7 +131,7 @@ public class LoginWindow {
             logoText.setStyle("""
                 -fx-font-size: 16px;
                 -fx-font-weight: bold;
-                -fx-fill: #3182CE;
+                -fx-fill: #2563EB;
                 """);
 
             logoBox.getChildren().addAll(crossSymbol, logoText);
