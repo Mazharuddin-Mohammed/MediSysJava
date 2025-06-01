@@ -182,6 +182,77 @@ META-INF/
 medisys.log
 medisys-*.log
 
+# Generated Reports - Exclude all exported report files
+*.pdf
+*.csv
+*.xlsx
+*.xls
+*.html
+*.txt
+*.xml
+*.json
+
+# Report files with specific naming patterns
+*Report*.pdf
+*Report*.csv
+*Report*.xlsx
+*Report*.html
+*Report*.txt
+*Summary*.pdf
+*Summary*.csv
+*Analysis*.pdf
+*Analysis*.csv
+*Export*.pdf
+*Export*.csv
+
+# Date-stamped report files
+*_20*.pdf
+*_20*.csv
+*_20*.xlsx
+*_20*.html
+*_20*.txt
+
+# Department and specialty reports
+AllDepartmentsReport*.pdf
+AllDepartmentsReport*.csv
+DepartmentReport*.pdf
+DepartmentReport*.csv
+PatientReport*.pdf
+PatientReport*.csv
+DoctorReport*.pdf
+DoctorReport*.csv
+AppointmentReport*.pdf
+AppointmentReport*.csv
+FinancialReport*.pdf
+FinancialReport*.csv
+BillingReport*.pdf
+BillingReport*.csv
+
+# Daily, Weekly, Monthly reports
+DailyReport*.pdf
+DailyReport*.csv
+WeeklyReport*.pdf
+WeeklyReport*.csv
+MonthlyReport*.pdf
+MonthlyReport*.csv
+DailySummaryReport*.pdf
+DailySummaryReport*.csv
+FinancialAnalysisReport*.pdf
+FinancialAnalysisReport*.csv
+
+# Temporary export files
+temp_export.*
+export_temp.*
+report_temp.*
+*.tmp.pdf
+*.tmp.csv
+*.tmp.xlsx
+
+# Backup report files
+*.pdf.bak
+*.csv.bak
+*.xlsx.bak
+
 # H2 Database files
 *.h2.db
 *.trace.db
