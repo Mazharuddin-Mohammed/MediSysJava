@@ -65,38 +65,76 @@ public class LoginWindow {
             -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             """);
         
-        // Logo/Icon
+        // Logo/Icon with actual logo image
         VBox logoContainer = new VBox(10);
         logoContainer.setAlignment(Pos.CENTER);
 
-        // Create a styled logo using CSS
-        VBox logoBox = new VBox(5);
-        logoBox.setAlignment(Pos.CENTER);
-        logoBox.setStyle("""
-            -fx-background-color: white;
-            -fx-background-radius: 60;
-            -fx-border-radius: 60;
-            -fx-padding: 20;
-            -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);
-            """);
+        try {
+            // Try to load the actual logo image
+            javafx.scene.image.Image logoImage = new javafx.scene.image.Image(
+                getClass().getResourceAsStream("/images/logo.jpg")
+            );
 
-        // Medical cross symbol
-        Text crossSymbol = new Text("✚");
-        crossSymbol.setStyle("""
-            -fx-font-size: 48px;
-            -fx-fill: #2E86AB;
-            """);
+            // Create styled container for logo
+            VBox logoBox = new VBox(5);
+            logoBox.setAlignment(Pos.CENTER);
+            logoBox.setStyle("""
+                -fx-background-color: white;
+                -fx-background-radius: 60;
+                -fx-border-radius: 60;
+                -fx-padding: 20;
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);
+                """);
 
-        // MediSys text
-        Text logoText = new Text("MediSys");
-        logoText.setStyle("""
-            -fx-font-size: 16px;
-            -fx-font-weight: bold;
-            -fx-fill: #2E86AB;
-            """);
+            // Logo image
+            javafx.scene.image.ImageView logoImageView = new javafx.scene.image.ImageView(logoImage);
+            logoImageView.setFitWidth(80);
+            logoImageView.setFitHeight(80);
+            logoImageView.setPreserveRatio(true);
+            logoImageView.setStyle("-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);");
 
-        logoBox.getChildren().addAll(crossSymbol, logoText);
-        logoContainer.getChildren().add(logoBox);
+            // MediSys text
+            Text logoText = new Text("MediSys");
+            logoText.setStyle("""
+                -fx-font-size: 16px;
+                -fx-font-weight: bold;
+                -fx-fill: #2E86AB;
+                """);
+
+            logoBox.getChildren().addAll(logoImageView, logoText);
+            logoContainer.getChildren().add(logoBox);
+
+        } catch (Exception e) {
+            // Fallback to styled logo using CSS if image not found
+            VBox logoBox = new VBox(5);
+            logoBox.setAlignment(Pos.CENTER);
+            logoBox.setStyle("""
+                -fx-background-color: white;
+                -fx-background-radius: 60;
+                -fx-border-radius: 60;
+                -fx-padding: 20;
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);
+                """);
+
+            // Medical cross symbol
+            Text crossSymbol = new Text("✚");
+            crossSymbol.setStyle("""
+                -fx-font-size: 48px;
+                -fx-fill: #2E86AB;
+                """);
+
+            // MediSys text
+            Text logoText = new Text("MediSys");
+            logoText.setStyle("""
+                -fx-font-size: 16px;
+                -fx-font-weight: bold;
+                -fx-fill: #2E86AB;
+                """);
+
+            logoBox.getChildren().addAll(crossSymbol, logoText);
+            logoContainer.getChildren().add(logoBox);
+            System.out.println("⚠️ Logo image not found, using fallback design");
+        }
         
         // Title
         Text title = new Text("MediSys");
