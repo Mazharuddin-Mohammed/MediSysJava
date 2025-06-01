@@ -4,6 +4,20 @@
     -fx-background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
+/* Consistent Font Sizing */
+.text-small { -fx-font-size: 12px; }
+.text-medium { -fx-font-size: 14px; }
+.text-large { -fx-font-size: 16px; }
+.text-xlarge { -fx-font-size: 18px; }
+.text-title { -fx-font-size: 20px; }
+.text-header { -fx-font-size: 24px; }
+.text-display { -fx-font-size: 28px; }
+
+.icon-small { -fx-font-size: 16px; }
+.icon-medium { -fx-font-size: 20px; }
+.icon-large { -fx-font-size: 24px; }
+.icon-xlarge { -fx-font-size: 32px; }
+
 .main-vbox {
     -fx-padding: 20;
     -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

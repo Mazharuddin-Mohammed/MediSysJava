@@ -3,6 +3,7 @@ package com.medisys.desktop.ui.components;
 import com.medisys.desktop.model.User;
 import com.medisys.desktop.ui.forms.AppointmentForm;
 import com.medisys.desktop.utils.ReportExporter;
+import com.medisys.desktop.utils.IconLibrary;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -51,27 +52,27 @@ public class QuickActionsPanel {
         grid.setAlignment(Pos.CENTER);
         
         // Row 1: Patient & Doctor Actions
-        Button addPatientBtn = createQuickActionButton("👤 Add Patient", "#4ECDC4", this::quickAddPatient);
-        Button addDoctorBtn = createQuickActionButton("👨‍⚕️ Add Doctor", "#A23B72", this::quickAddDoctor);
-        Button scheduleAppointmentBtn = createQuickActionButton("📅 Schedule", "#F18F01", this::quickScheduleAppointment);
-        
+        Button addPatientBtn = createQuickActionButton(IconLibrary.PATIENTS + " Add Patient", "#4ECDC4", this::quickAddPatient);
+        Button addDoctorBtn = createQuickActionButton(IconLibrary.DOCTOR + " Add Doctor", "#A23B72", this::quickAddDoctor);
+        Button scheduleAppointmentBtn = createQuickActionButton(IconLibrary.CALENDAR + " Schedule", "#F18F01", this::quickScheduleAppointment);
+
         grid.add(addPatientBtn, 0, 0);
         grid.add(addDoctorBtn, 1, 0);
         grid.add(scheduleAppointmentBtn, 2, 0);
-        
+
         // Row 2: Financial & Reports
-        Button createBillBtn = createQuickActionButton("💰 Create Bill", "#27AE60", this::quickCreateBill);
-        Button generateReportBtn = createQuickActionButton("📊 Generate Report", "#E74C3C", this::quickGenerateReport);
-        Button viewStatsBtn = createQuickActionButton("📈 View Stats", "#9B59B6", this::quickViewStats);
-        
+        Button createBillBtn = createQuickActionButton(IconLibrary.MONEY + " Create Bill", "#27AE60", this::quickCreateBill);
+        Button generateReportBtn = createQuickActionButton(IconLibrary.REPORT + " Generate Report", "#E74C3C", this::quickGenerateReport);
+        Button viewStatsBtn = createQuickActionButton(IconLibrary.STATISTICS + " View Stats", "#9B59B6", this::quickViewStats);
+
         grid.add(createBillBtn, 0, 1);
         grid.add(generateReportBtn, 1, 1);
         grid.add(viewStatsBtn, 2, 1);
-        
+
         // Row 3: System Actions
-        Button backupBtn = createQuickActionButton("💾 Backup Data", "#34495E", this::quickBackupData);
-        Button settingsBtn = createQuickActionButton("⚙️ Settings", "#7F8C8D", this::quickSettings);
-        Button helpBtn = createQuickActionButton("❓ Help", "#3498DB", this::quickHelp);
+        Button backupBtn = createQuickActionButton(IconLibrary.BACKUP + " Backup Data", "#34495E", this::quickBackupData);
+        Button settingsBtn = createQuickActionButton(IconLibrary.SETTINGS + " Settings", "#7F8C8D", this::quickSettings);
+        Button helpBtn = createQuickActionButton(IconLibrary.HELP + " Help", "#3498DB", this::quickHelp);
         
         grid.add(backupBtn, 0, 2);
         grid.add(settingsBtn, 1, 2);
@@ -112,23 +113,23 @@ public class QuickActionsPanel {
         emergencySection.setPadding(new Insets(15));
         emergencySection.setStyle("-fx-background-color: #FFE5E5; -fx-background-radius: 8; -fx-border-color: #E74C3C; -fx-border-radius: 8;");
         
-        Text emergencyHeader = new Text("🚨 Emergency Actions");
+        Text emergencyHeader = new Text(IconLibrary.EMERGENCY + " Emergency Actions");
         emergencyHeader.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-fill: #C0392B;");
-        
+
         HBox emergencyButtons = new HBox(10);
         emergencyButtons.setAlignment(Pos.CENTER);
-        
-        Button emergencyAdmissionBtn = new Button("🏥 Emergency Admission");
+
+        Button emergencyAdmissionBtn = new Button(IconLibrary.HOSPITAL + " Emergency Admission");
         emergencyAdmissionBtn.getStyleClass().add("emergency-button");
         emergencyAdmissionBtn.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;");
         emergencyAdmissionBtn.setOnAction(e -> quickEmergencyAdmission());
-        
-        Button callDoctorBtn = new Button("📞 Call Doctor");
+
+        Button callDoctorBtn = new Button(IconLibrary.PHONE + " Call Doctor");
         callDoctorBtn.getStyleClass().add("emergency-button");
         callDoctorBtn.setStyle("-fx-background-color: #C0392B; -fx-text-fill: white; -fx-font-weight: bold;");
         callDoctorBtn.setOnAction(e -> quickCallDoctor());
-        
-        Button alertSystemBtn = new Button("🔔 Alert System");
+
+        Button alertSystemBtn = new Button(IconLibrary.NOTIFICATION + " Alert System");
         alertSystemBtn.getStyleClass().add("emergency-button");
         alertSystemBtn.setStyle("-fx-background-color: #A93226; -fx-text-fill: white; -fx-font-weight: bold;");
         alertSystemBtn.setOnAction(e -> quickAlertSystem());

@@ -47,17 +47,97 @@ public class DashboardModule {
     }
     
     private VBox createWelcomeHeader() {
-        VBox header = new VBox(10);
+        VBox header = new VBox(15);
         header.setPadding(new Insets(0, 0, 20, 0));
-        
+        header.setAlignment(Pos.CENTER);
+
+        // Logo and branding section
+        HBox logoSection = new HBox(15);
+        logoSection.setAlignment(Pos.CENTER);
+
+        try {
+            // Try to load the actual logo image
+            javafx.scene.image.Image logoImage = new javafx.scene.image.Image(
+                getClass().getResourceAsStream("/images/logo.jpg")
+            );
+
+            javafx.scene.image.ImageView logoImageView = new javafx.scene.image.ImageView(logoImage);
+            logoImageView.setFitWidth(60);
+            logoImageView.setFitHeight(60);
+            logoImageView.setPreserveRatio(true);
+            logoImageView.setStyle("-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);");
+
+            VBox brandingText = new VBox(5);
+            brandingText.setAlignment(Pos.CENTER_LEFT);
+
+            Text medisysText = new Text("MEDISYS");
+            medisysText.setStyle("""
+                -fx-font-size: 28px;
+                -fx-font-weight: bold;
+                -fx-fill: linear-gradient(to right, #2E86AB, #4ECDC4);
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 2, 0, 0, 1);
+                """);
+
+            Text subtitleText = new Text("Hospital Management System");
+            subtitleText.setStyle("""
+                -fx-font-size: 14px;
+                -fx-fill: #7F8C8D;
+                -fx-font-style: italic;
+                """);
+
+            brandingText.getChildren().addAll(medisysText, subtitleText);
+            logoSection.getChildren().addAll(logoImageView, brandingText);
+
+        } catch (Exception e) {
+            // Fallback to text-only branding if logo not found
+            Text medisysText = new Text("🏥 MEDISYS");
+            medisysText.setStyle("""
+                -fx-font-size: 32px;
+                -fx-font-weight: bold;
+                -fx-fill: linear-gradient(to right, #2E86AB, #4ECDC4);
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 2, 0, 0, 1);
+                """);
+
+            Text subtitleText = new Text("Hospital Management System");
+            subtitleText.setStyle("""
+                -fx-font-size: 14px;
+                -fx-fill: #7F8C8D;
+                -fx-font-style: italic;
+                """);
+
+            VBox fallbackBranding = new VBox(5);
+            fallbackBranding.setAlignment(Pos.CENTER);
+            fallbackBranding.getChildren().addAll(medisysText, subtitleText);
+            logoSection.getChildren().add(fallbackBranding);
+
+            System.out.println("⚠️ Logo image not found, using text fallback");
+        }
+
+        // Welcome section
+        VBox welcomeSection = new VBox(5);
+        welcomeSection.setAlignment(Pos.CENTER);
+
         Text welcomeText = new Text("Welcome back, " + currentUser.getFirstName() + "!");
         welcomeText.getStyleClass().add("header-title");
-        
-        Text dateText = new Text("Today is " + java.time.LocalDate.now().toString());
+        welcomeText.setStyle("""
+            -fx-font-size: 24px;
+            -fx-font-weight: bold;
+            -fx-fill: #2C3E50;
+            """);
+
+        Text dateText = new Text("Today is " + java.time.LocalDate.now().format(
+            java.time.format.DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy")
+        ));
         dateText.getStyleClass().add("header-subtitle");
-        
-        header.getChildren().addAll(welcomeText, dateText);
-        
+        dateText.setStyle("""
+            -fx-font-size: 16px;
+            -fx-fill: #7F8C8D;
+            """);
+
+        welcomeSection.getChildren().addAll(welcomeText, dateText);
+
+        header.getChildren().addAll(logoSection, welcomeSection);
+
         return header;
     }
     

@@ -2,6 +2,8 @@ package com.medisys.desktop.utils;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ButtonBar;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.chart.Chart;
@@ -20,52 +22,97 @@ public class ReportExporter {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     
     public static void exportReport(String reportType, String department, ObservableList<?> data, Stage parentStage) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Export " + reportType + " Report");
-        
-        // Set initial filename
-        String filename = generateFilename(reportType, department);
-        fileChooser.setInitialFileName(filename);
-        
-        // Add extension filters
-        fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("PDF Files", "*.pdf"),
-            new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"),
-            new FileChooser.ExtensionFilter("CSV Files", "*.csv"),
-            new FileChooser.ExtensionFilter("HTML Files", "*.html"),
-            new FileChooser.ExtensionFilter("All Files", "*.*")
-        );
-        
-        File file = fileChooser.showSaveDialog(parentStage);
-        if (file != null) {
-            try {
-                String extension = getFileExtension(file.getName()).toLowerCase();
-                
-                switch (extension) {
-                    case "pdf":
-                        exportToPDF(reportType, department, data, file);
-                        break;
-                    case "xlsx":
-                        exportToExcel(reportType, department, data, file);
-                        break;
-                    case "csv":
-                        exportToCSV(reportType, department, data, file);
-                        break;
-                    case "html":
-                        exportToHTML(reportType, department, data, file);
-                        break;
-                    default:
-                        exportToCSV(reportType, department, data, file); // Default to CSV
-                        break;
-                }
-                
-                showSuccessMessage("Report exported successfully to: " + file.getAbsolutePath());
-                
-            } catch (Exception e) {
-                showErrorMessage("Failed to export report: " + e.getMessage());
-                e.printStackTrace();
+        // First, show format selection dialog
+        Alert formatDialog = new Alert(Alert.AlertType.CONFIRMATION);
+        formatDialog.setTitle("Export Format Selection");
+        formatDialog.setHeaderText("Choose Export Format for " + reportType);
+        formatDialog.setContentText("Select the format you want to export the report in:");
+
+        ButtonType pdfBtn = new ButtonType("📄 PDF");
+        ButtonType csvBtn = new ButtonType("📊 CSV");
+        ButtonType htmlBtn = new ButtonType("🌐 HTML");
+        ButtonType excelBtn = new ButtonType("📋 Excel");
+        ButtonType cancelBtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        formatDialog.getButtonTypes().setAll(pdfBtn, csvBtn, htmlBtn, excelBtn, cancelBtn);
+
+        formatDialog.showAndWait().ifPresent(response -> {
+            if (response == cancelBtn) return;
+
+            String format = "";
+            String extension = "";
+
+            if (response == pdfBtn) {
+                format = "PDF";
+                extension = ".pdf";
+            } else if (response == csvBtn) {
+                format = "CSV";
+                extension = ".csv";
+            } else if (response == htmlBtn) {
+                format = "HTML";
+                extension = ".html";
+            } else if (response == excelBtn) {
+                format = "Excel";
+                extension = ".xlsx";
             }
-        }
+
+            // Now show file chooser with proper extension
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Export " + reportType + " Report as " + format);
+
+            // Set initial filename with proper extension
+            String filename = generateFilename(reportType, department) + extension;
+            fileChooser.setInitialFileName(filename);
+
+            // Add specific extension filter based on selection
+            switch (extension) {
+                case ".pdf":
+                    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+                    break;
+                case ".csv":
+                    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+                    break;
+                case ".html":
+                    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML Files", "*.html"));
+                    break;
+                case ".xlsx":
+                    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"));
+                    break;
+            }
+
+            File file = fileChooser.showSaveDialog(parentStage);
+            if (file != null) {
+                try {
+                    // Ensure file has correct extension
+                    String filePath = file.getAbsolutePath();
+                    if (!filePath.toLowerCase().endsWith(extension.toLowerCase())) {
+                        file = new File(filePath + extension);
+                    }
+
+                    // Export based on selected format
+                    switch (extension) {
+                        case ".pdf":
+                            exportToPDF(reportType, department, data, file);
+                            break;
+                        case ".xlsx":
+                            exportToExcel(reportType, department, data, file);
+                            break;
+                        case ".csv":
+                            exportToCSV(reportType, department, data, file);
+                            break;
+                        case ".html":
+                            exportToHTML(reportType, department, data, file);
+                            break;
+                    }
+
+                    showSuccessMessage("Report exported successfully as " + format + " to:\n" + file.getAbsolutePath());
+
+                } catch (Exception e) {
+                    showErrorMessage("Failed to export report: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
     }
     
     private static String generateFilename(String reportType, String department) {
