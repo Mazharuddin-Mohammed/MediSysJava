@@ -79,8 +79,7 @@ public class CachedPatientService {
         }
     }
     
-    @CacheEvict(value = "patients", key = "#id")
-    @CacheEvict(value = "patients", key = "'all-' + #userId")
+    @CacheEvict(value = "patients", allEntries = true)
     public void deletePatient(Long id, Long userId) {
         Instant start = Instant.now();
         try {

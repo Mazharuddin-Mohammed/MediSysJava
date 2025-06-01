@@ -5,7 +5,7 @@ import com.medisys.desktop.controller.PatientController;
 import com.medisys.desktop.service.AuditService;
 import com.medisys.desktop.service.AuthService;
 import com.medisys.desktop.service.PatientService;
-import org.flywaydb.core.Flyway;
+// import org.flywaydb.core.Flyway;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,13 +41,14 @@ public class AppConfig {
         return new JdbcTemplate(dataSource);
     }
 
-    @Bean
-    public Flyway flyway(DataSource dataSource) {
-        return Flyway.configure()
-                .dataSource(dataSource)
-                .locations("classpath:db/migration")
-                .load();
-    }
+    // Flyway disabled due to compatibility issues with PostgreSQL 16.9
+    // @Bean
+    // public Flyway flyway(DataSource dataSource) {
+    //     return Flyway.configure()
+    //             .dataSource(dataSource)
+    //             .locations("classpath:db/migration")
+    //             .load();
+    // }
 
     @Bean
     public AuthService authService(JdbcTemplate jdbcTemplate) {
