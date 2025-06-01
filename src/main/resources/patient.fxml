@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10" styleClass="main-vbox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.medisys.desktop.controller.PatientController">
+    <Label text="Patient Dashboard" styleClass="title-label"/>
+    <HBox spacing="10">
+        <ListView fx:id="patientListView" prefHeight="200" prefWidth="200"/>
+        <VBox spacing="10">
+            <TextField fx:id="patientIdField" promptText="Patient ID"/>
+            <TextField fx:id="nameField" promptText="Name"/>
+            <TextField fx:id="dobField" promptText="Date of Birth (YYYY-MM-DD)"/>
+            <TextField fx:id="contactField" promptText="Contact Info"/>
+            <HBox spacing="5">
+                <Button fx:id="createButton" text="Create" onAction="#handleCreatePatient"/>
+                <Button fx:id="fetchButton" text="Fetch" onAction="#handleFetchPatient"/>
+                <Button fx:id="updateButton" text="Update" onAction="#handleUpdatePatient"/>
+                <Button fx:id="deleteButton" text="Delete" onAction="#handleDeletePatient"/>
+            </HBox>
+            <Label fx:id="errorLabel" styleClass="error-label"/>
+        </VBox>
+    </HBox>
+</VBox>

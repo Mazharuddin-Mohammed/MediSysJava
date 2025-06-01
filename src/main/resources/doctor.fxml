@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10" styleClass="main-vbox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.medisys.desktop.controller.DoctorController">
+    <Label text="Doctor Dashboard" styleClass="title-label"/>
+    <HBox spacing="10">
+        <ListView fx:id="doctorListView" prefHeight="200" prefWidth="200"/>
+        <VBox spacing="10">
+            <TextField fx:id="doctorIdField" promptText="Doctor ID"/>
+            <TextField fx:id="nameField" promptText="Name"/>
+            <TextField fx:id="specialtyField" promptText="Specialty"/>
+            <TextField fx:id="contactField" promptText="Contact Info"/>
+            <TextField fx:id="departmentIdField" promptText="Department ID"/>
+            <HBox spacing="5">
+                <Button fx:id="createButton" text="Create" onAction="#handleCreateDoctor"/>
+                <Button fx:id="fetchButton" text="Fetch" onAction="#handleFetchDoctor"/>
+                <Button fx:id="updateButton" text="Update" onAction="#handleUpdateDoctor"/>
+                <Button fx:id="deleteButton" text="Delete" onAction="#handleDeleteDoctor"/>
+            </HBox>
+            <Label fx:id="errorLabel" styleClass="error-label"/>
+        </VBox>
+    </HBox>
+</VBox>
