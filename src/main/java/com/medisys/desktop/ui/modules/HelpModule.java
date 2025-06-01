@@ -15,6 +15,8 @@ public class HelpModule {
     private final User currentUser;
     private final VBox root;
     private TreeView<String> helpTree;
+    private ScrollPane contentScrollPane;
+    private VBox contentArea;
 
     public HelpModule(User currentUser) {
         this.currentUser = currentUser;
@@ -217,12 +219,12 @@ public class HelpModule {
         contentTitle.getStyleClass().add("section-title");
 
         // Content area
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.getStyleClass().add("modern-scroll-pane");
-        scrollPane.setPrefHeight(500);
-        scrollPane.setFitToWidth(true);
+        contentScrollPane = new ScrollPane();
+        contentScrollPane.getStyleClass().add("modern-scroll-pane");
+        contentScrollPane.setPrefHeight(500);
+        contentScrollPane.setFitToWidth(true);
 
-        VBox contentArea = new VBox(15);
+        contentArea = new VBox(15);
         contentArea.setPadding(new Insets(20));
 
         // Welcome content
@@ -238,21 +240,19 @@ public class HelpModule {
         welcomeText.setWrappingWidth(600);
 
         contentArea.getChildren().addAll(welcomeTitle, welcomeText);
-        scrollPane.setContent(contentArea);
+        contentScrollPane.setContent(contentArea);
 
-        content.getChildren().addAll(contentTitle, scrollPane);
+        content.getChildren().addAll(contentTitle, contentScrollPane);
 
         return content;
     }
 
     private void showHelpContent(String topic) {
-        ScrollPane scrollPane = (ScrollPane) ((VBox) root.getChildren().get(1))
-            .getChildren().get(1).lookup(".scroll-pane");
+        if (contentArea != null && contentScrollPane != null) {
+            // Clear existing content
+            contentArea.getChildren().clear();
 
-        if (scrollPane != null) {
-            VBox contentArea = new VBox(15);
-            contentArea.setPadding(new Insets(20));
-
+            // Create new content
             Text title = new Text(topic);
             title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #2C3E50;");
 
@@ -260,8 +260,11 @@ public class HelpModule {
             content.setStyle("-fx-font-size: 14px; -fx-fill: #34495E; -fx-text-alignment: justify;");
             content.setWrappingWidth(600);
 
+            // Add content to the area
             contentArea.getChildren().addAll(title, content);
-            scrollPane.setContent(contentArea);
+
+            // Scroll to top
+            contentScrollPane.setVvalue(0);
         }
     }
 
