@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="55" fill="#2E86AB" stroke="#FFFFFF" stroke-width="3"/>
+  
+  <!-- Medical Cross -->
+  <rect x="50" y="30" width="20" height="60" fill="#FFFFFF" rx="3"/>
+  <rect x="30" y="50" width="60" height="20" fill="#FFFFFF" rx="3"/>
+  
+  <!-- Heart Symbol -->
+  <path d="M45 40 C45 35, 50 30, 55 35 C60 30, 65 35, 65 40 C65 50, 55 60, 55 60 C55 60, 45 50, 45 40 Z" 
+        fill="#F18F01" opacity="0.8"/>
+  
+  <!-- Pulse Line -->
+  <path d="M20 85 L30 85 L35 75 L40 95 L45 65 L50 105 L55 75 L60 85 L100 85" 
+        stroke="#4ECDC4" stroke-width="3" fill="none"/>
+  
+  <!-- Text -->
+  <text x="60" y="110" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="12" font-weight="bold" fill="#2E86AB">MediSys</text>
+</svg>

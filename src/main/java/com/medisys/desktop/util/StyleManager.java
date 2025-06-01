@@ -32,8 +32,19 @@ public class StyleManager {
     public static final String GRADIENT_WARNING = "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)";
     
     public static void applyGlobalStyles(Scene scene) {
-        scene.getStylesheets().clear();
-        scene.getStylesheets().add(StyleManager.class.getResource("/styles/modern-theme.css").toExternalForm());
+        try {
+            scene.getStylesheets().clear();
+            var cssResource = StyleManager.class.getResource("/styles/modern-theme.css");
+            if (cssResource != null) {
+                scene.getStylesheets().add(cssResource.toExternalForm());
+                System.out.println("✅ CSS styles loaded successfully");
+            } else {
+                System.out.println("⚠️ CSS file not found, using default styles");
+            }
+        } catch (Exception e) {
+            System.out.println("⚠️ Error loading CSS: " + e.getMessage());
+            // Continue without custom styles
+        }
     }
     
     // CSS styles are loaded from external file

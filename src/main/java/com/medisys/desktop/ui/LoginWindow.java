@@ -66,19 +66,37 @@ public class LoginWindow {
             """);
         
         // Logo/Icon
-        ImageView logoView = new ImageView();
-        try {
-            Image logo = new Image(getClass().getResourceAsStream("/icons/medisys-logo.png"));
-            logoView.setImage(logo);
-            logoView.setFitWidth(120);
-            logoView.setFitHeight(120);
-            logoView.setPreserveRatio(true);
-        } catch (Exception e) {
-            // Fallback to text logo
-            Text logoText = new Text("🏥");
-            logoText.setStyle("-fx-font-size: 80px;");
-            brandingSide.getChildren().add(logoText);
-        }
+        VBox logoContainer = new VBox(10);
+        logoContainer.setAlignment(Pos.CENTER);
+
+        // Create a styled logo using CSS
+        VBox logoBox = new VBox(5);
+        logoBox.setAlignment(Pos.CENTER);
+        logoBox.setStyle("""
+            -fx-background-color: white;
+            -fx-background-radius: 60;
+            -fx-border-radius: 60;
+            -fx-padding: 20;
+            -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);
+            """);
+
+        // Medical cross symbol
+        Text crossSymbol = new Text("✚");
+        crossSymbol.setStyle("""
+            -fx-font-size: 48px;
+            -fx-fill: #2E86AB;
+            """);
+
+        // MediSys text
+        Text logoText = new Text("MediSys");
+        logoText.setStyle("""
+            -fx-font-size: 16px;
+            -fx-font-weight: bold;
+            -fx-fill: #2E86AB;
+            """);
+
+        logoBox.getChildren().addAll(crossSymbol, logoText);
+        logoContainer.getChildren().add(logoBox);
         
         // Title
         Text title = new Text("MediSys");
@@ -117,11 +135,7 @@ public class LoginWindow {
             features.getChildren().add(featureText);
         }
         
-        if (logoView.getImage() != null) {
-            brandingSide.getChildren().addAll(logoView, title, subtitle, features);
-        } else {
-            brandingSide.getChildren().addAll(title, subtitle, features);
-        }
+        brandingSide.getChildren().addAll(logoContainer, title, subtitle, features);
         
         return brandingSide;
     }

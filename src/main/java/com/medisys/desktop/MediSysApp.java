@@ -25,32 +25,49 @@ public class MediSysApp extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        instance = this;
-        this.primaryStage = primaryStage;
-        
-        // Set application icon
         try {
-            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/medisys-icon.png")));
+            instance = this;
+            this.primaryStage = primaryStage;
+
+            // Add global exception handler
+            Thread.setDefaultUncaughtExceptionHandler((thread, exception) -> {
+                System.err.println("❌ Uncaught exception in thread " + thread.getName() + ": " + exception.getMessage());
+                exception.printStackTrace();
+            });
+
+            // Set application icon
+            try {
+                primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/medisys-icon.png")));
+            } catch (Exception e) {
+                System.out.println("⚠️ Could not load application icon: " + e.getMessage());
+            }
+
+            // Configure primary stage
+            primaryStage.setTitle("MediSys - Healthcare Management System");
+            primaryStage.setMinWidth(1200);
+            primaryStage.setMinHeight(800);
+            primaryStage.setMaximized(true);
+
+            // Show login window
+            showLoginWindow();
+
+            // Handle application close
+            primaryStage.setOnCloseRequest(e -> {
+                try {
+                    Platform.exit();
+                    System.exit(0);
+                } catch (Exception ex) {
+                    System.err.println("Error during application shutdown: " + ex.getMessage());
+                    System.exit(1);
+                }
+            });
+
+            System.out.println("🚀 MediSys Application started successfully!");
         } catch (Exception e) {
-            System.out.println("Could not load application icon");
+            System.err.println("❌ Critical error starting MediSys: " + e.getMessage());
+            e.printStackTrace();
+            System.exit(1);
         }
-        
-        // Configure primary stage
-        primaryStage.setTitle("MediSys - Healthcare Management System");
-        primaryStage.setMinWidth(1200);
-        primaryStage.setMinHeight(800);
-        primaryStage.setMaximized(true);
-        
-        // Show login window
-        showLoginWindow();
-        
-        // Handle application close
-        primaryStage.setOnCloseRequest(e -> {
-            Platform.exit();
-            System.exit(0);
-        });
-        
-        System.out.println("🚀 MediSys Application started successfully!");
     }
     
     public void showLoginWindow() {
