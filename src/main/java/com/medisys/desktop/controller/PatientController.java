@@ -47,17 +47,24 @@ public class PatientController {
     private void initialize() {
         patientListView.setOnMouseClicked(event -> {
             String selected = patientListView.getSelectionModel().getSelectedItem();
-            if (selected != null) {
-                Long id = Long.parseLong(selected.split(" - ")[0]);
+            if (selected != null && loggedInUser != null) {
                 try {
+                    Long id = Long.parseLong(selected.split(" - ")[0]);
                     Patient patient = patientService.getPatient(id, loggedInUser.getId());
-                    patientIdField.setText(String.valueOf(patient.getId()));
-                    nameField.setText(patient.getName());
-                    dobField.setText(patient.getDateOfBirth());
-                    contactField.setText(patient.getContactInfo());
+                    if (patient != null) {
+                        patientIdField.setText(String.valueOf(patient.getId()));
+                        nameField.setText(patient.getName() != null ? patient.getName() : "");
+                        dobField.setText(patient.getDateOfBirth() != null ? patient.getDateOfBirth() : "");
+                        contactField.setText(patient.getContactInfo() != null ? patient.getContactInfo() : "");
+                        errorLabel.setText("");
+                    }
+                } catch (NumberFormatException e) {
+                    errorLabel.setText("Invalid patient ID format");
                 } catch (Exception e) {
                     errorLabel.setText("Error fetching patient: " + e.getMessage());
                 }
+            } else if (loggedInUser == null) {
+                errorLabel.setText("User not logged in");
             }
         });
     }

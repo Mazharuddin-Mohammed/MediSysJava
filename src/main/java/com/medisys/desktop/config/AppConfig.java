@@ -19,11 +19,20 @@ public class AppConfig {
 
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        com.zaxxer.hikari.HikariDataSource dataSource = new com.zaxxer.hikari.HikariDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/medisys?currentSchema=public");
+        dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/medisys?currentSchema=public");
         dataSource.setUsername("postgres");
         dataSource.setPassword("secret");
+
+        // Connection pool settings
+        dataSource.setMaximumPoolSize(10);
+        dataSource.setMinimumIdle(2);
+        dataSource.setConnectionTimeout(30000);
+        dataSource.setIdleTimeout(600000);
+        dataSource.setMaxLifetime(1800000);
+        dataSource.setLeakDetectionThreshold(60000);
+
         return dataSource;
     }
 
