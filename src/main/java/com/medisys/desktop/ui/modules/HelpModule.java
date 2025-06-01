@@ -437,13 +437,21 @@ public class HelpModule {
     private void showContactDialog() {
         Alert dialog = new Alert(Alert.AlertType.INFORMATION);
         dialog.setTitle("Contact Support");
-        dialog.setHeaderText("Contact Information");
+        dialog.setHeaderText("Developer Contact Information");
         dialog.setContentText(
-            "For technical support, please contact:\n\n" +
-            "📧 Email: support@medisys.com\n" +
-            "📞 Phone: +1-800-MEDISYS\n" +
-            "🌐 Website: www.medisys.com/support\n\n" +
-            "Support Hours: Monday - Friday, 9 AM - 6 PM"
+            "For technical support and inquiries, please contact:\n\n" +
+            "👨‍💻 Developer: Mazharuddin Mohammed\n" +
+            "📧 Email: mazharuddin.mohammed.official@gmail.com\n" +
+            "📞 Phone: +91-9347607780\n" +
+            "📍 Location: Hyderabad, India\n\n" +
+            "🌐 GitHub: github.com/mazharuddin8\n" +
+            "💼 LinkedIn: linkedin.com/in/mazharuddin-mohammed\n\n" +
+            "Available for:\n" +
+            "• Technical Support & Bug Reports\n" +
+            "• Feature Requests & Enhancements\n" +
+            "• Custom Development Projects\n" +
+            "• Healthcare Software Solutions\n\n" +
+            "Response Time: Within 24 hours"
         );
         dialog.showAndWait();
     }

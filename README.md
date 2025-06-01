@@ -14,38 +14,40 @@
 ## 📸 Application Screenshots
 
 ### 🔐 Professional Login Interface
-![Login Window](docs/screenshots/login-window.png)
-*Secure login with enterprise-grade authentication and vibrant blue branding*
+![Login Window](src/main/resources/images/screenshots/LoginWindow.png)
+*Secure login with vibrant blue background and MediSys branding*
 
 ### 🏠 Main Dashboard
-![Main Dashboard](docs/screenshots/main-dashboard.png)
+![Dashboard](src/main/resources/images/screenshots/Dashboard.png)
 *Comprehensive overview with real-time statistics and quick access modules*
 
 ### 👥 Patient Management
-![Patient Management](docs/screenshots/patient-management.png)
+![Patient Management](src/main/resources/images/screenshots/PatientManagement.png)
 *Complete patient lifecycle management with search, filtering, and detailed records*
 
+### ➕ New Patient Registration
+![New Patient](src/main/resources/images/screenshots/NewPatient.png)
+*Comprehensive patient registration form with photo upload capability*
+
 ### 👨‍⚕️ Doctor Management
-![Doctor Management](docs/screenshots/doctor-management.png)
+![Doctor Management](src/main/resources/images/screenshots/DoctorManagement.png)
 *Physician profiles, specializations, and department assignments*
 
-### 🏥 Department Management
-![Department Management](docs/screenshots/department-management.png)
-*Organizational structure and resource allocation management*
+### ➕ New Doctor Registration
+![New Doctor](src/main/resources/images/screenshots/NewDoctor.png)
+*Complete doctor registration form with professional information and photo upload*
 
 ### 📅 Appointment Scheduling
-![Appointment Scheduling](docs/screenshots/appointment-scheduling.png)
-*Calendar-based appointment management with filtering and status tracking*
+![Appointments](src/main/resources/images/screenshots/Appointment.png)
+*Calendar-based appointment management with doctor availability and status tracking*
 
-### 💰 Financial Management
-![Financial Management](docs/screenshots/financial-management.png)
-*Comprehensive billing, payments, and financial reporting*
+### � Emergency Admission
+![Emergency Admission](src/main/resources/images/screenshots/EmergencyAdmission.png)
+*Quick emergency patient admission with priority handling and immediate processing*
 
 ### 📊 Reports & Analytics
-![Reports Module](docs/screenshots/reports-module.png)
-*Advanced reporting with PDF/CSV export capabilities*
-
-> **Note**: Screenshots will be added after the application is fully tested and deployed. The application is currently functional with all features implemented and working correctly.
+![Reports Analytics](src/main/resources/images/screenshots/ReportsAnalytics.png)
+*Advanced reporting with PDF/CSV export capabilities and comprehensive filtering options*
 
 ## 🚀 Currently Implemented Features
 
@@ -484,12 +486,30 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## 🆘 Support & Contact
 
+### 👨‍💻 Developer Contact
+- **Developer**: Mazharuddin Mohammed
+- **Email**: mazharuddin.mohammed.official@gmail.com
+- **Phone**: +91-9347607780
+- **Location**: Hyderabad, India
+- **GitHub**: [github.com/mazharuddin8](https://github.com/mazharuddin8)
+- **LinkedIn**: [linkedin.com/in/mazharuddin-mohammed](https://linkedin.com/in/mazharuddin-mohammed)
+
+### 🔧 Technical Support
+Available for:
+- Technical Support & Bug Reports
+- Feature Requests & Enhancements
+- Custom Development Projects
+- Healthcare Software Solutions
+- System Integration & Deployment
+
+**Response Time**: Within 24 hours
+
+### 📚 Documentation & Resources
 - **Documentation**: [Wiki](https://github.com/your-org/medisys/wiki)
 - **Issues**: [GitHub Issues](https://github.com/your-org/medisys/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/your-org/medisys/discussions)
-- **Email**: support@medisys.com
 
 ## 🏆 Acknowledgments
 
