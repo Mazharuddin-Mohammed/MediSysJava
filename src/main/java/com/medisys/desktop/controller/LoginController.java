@@ -43,6 +43,10 @@ public class LoginController {
 
         try {
             loggedInUser = authService.authenticate(username, password);
+            if (loggedInUser == null) {
+                errorLabel.setText("Invalid username or password");
+                return;
+            }
             errorLabel.setText("Login successful");
 
             // Load the patient dashboard

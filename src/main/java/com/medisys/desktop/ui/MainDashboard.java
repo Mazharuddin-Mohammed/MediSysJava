@@ -2,6 +2,7 @@ package com.medisys.desktop.ui;
 
 import com.medisys.desktop.MediSysApp;
 import com.medisys.desktop.model.User;
+import com.medisys.desktop.ui.components.QuickActionsPanel;
 import com.medisys.desktop.ui.modules.*;
 import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;

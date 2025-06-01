@@ -1,6 +1,7 @@
 package com.medisys.desktop.ui.modules;
 
 import com.medisys.desktop.model.User;
+import com.medisys.desktop.ui.components.QuickActionsPanel;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.chart.BarChart;
@@ -139,7 +140,8 @@ public class DashboardModule {
         chartContainer.getChildren().addAll(chartTitle, chart);
         
         // Quick actions panel
-        VBox quickActions = createQuickActionsPanel();
+        QuickActionsPanel quickActionsPanel = new QuickActionsPanel(currentUser);
+        VBox quickActions = quickActionsPanel.getRoot();
         
         chartsRow.getChildren().addAll(chartContainer, quickActions);
         

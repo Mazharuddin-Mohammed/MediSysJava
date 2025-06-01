@@ -51,8 +51,8 @@ public class AppConfig {
     // }
 
     @Bean
-    public AuthService authService(JdbcTemplate jdbcTemplate) {
-        return new AuthService(jdbcTemplate);
+    public AuthService authService() {
+        return new AuthService();
     }
 
     @Bean
