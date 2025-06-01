@@ -54,7 +54,7 @@ public class PatientController {
                     if (patient != null) {
                         patientIdField.setText(String.valueOf(patient.getId()));
                         nameField.setText(patient.getName() != null ? patient.getName() : "");
-                        dobField.setText(patient.getDateOfBirth() != null ? patient.getDateOfBirth() : "");
+                        dobField.setText(patient.getDateOfBirth() != null ? patient.getDateOfBirth().toString() : "");
                         contactField.setText(patient.getContactInfo() != null ? patient.getContactInfo() : "");
                         errorLabel.setText("");
                     }
@@ -104,7 +104,7 @@ public class PatientController {
         try {
             Patient patient = patientService.getPatient(Long.parseLong(patientId), loggedInUser.getId());
             nameField.setText(patient.getName());
-            dobField.setText(patient.getDateOfBirth());
+            dobField.setText(patient.getDateOfBirth() != null ? patient.getDateOfBirth().toString() : "");
             contactField.setText(patient.getContactInfo());
             errorLabel.setText("");
         } catch (Exception e) {

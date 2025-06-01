@@ -215,6 +215,31 @@ public class Doctor {
         return 0;
     }
 
+    public void setExperience(int experience) {
+        // Calculate joining date based on experience
+        if (experience > 0) {
+            this.joiningDate = LocalDate.now().minusYears(experience);
+        }
+    }
+
+    public String getAvailableShifts() {
+        return getSchedule();
+    }
+
+    public void setAvailableShifts(String shifts) {
+        // Parse shifts and set schedule times
+        // This is a simplified implementation
+        this.workingDays = shifts;
+    }
+
+    public String getPhotoPath() {
+        return profilePhotoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.profilePhotoPath = photoPath;
+    }
+
     public String getSchedule() {
         StringBuilder schedule = new StringBuilder();
         if (morningStartTime != null && morningEndTime != null) {

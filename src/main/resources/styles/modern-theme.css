@@ -1,363 +1,344 @@
-/* MediSys Modern Theme CSS */
+/* MediSys Enterprise Theme CSS - Professional Healthcare Application */
+/* Mature, clean, and professional styling for enterprise use */
 
-/* Global Styles */
+/* ===== GLOBAL STYLES ===== */
 .root {
-    -fx-font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    -fx-font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     -fx-font-size: 14px;
-    -fx-background-color: #F8F9FA;
+    -fx-background-color: #FAFBFC;
+    -fx-text-fill: #2D3748;
 }
 
-/* Modern Button Styles */
-.modern-button {
-    -fx-background-color: #2E86AB;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+/* ===== PROFESSIONAL BUTTON SYSTEM ===== */
+/* Primary Button - Professional Blue */
+.modern-button, .btn-primary {
+    -fx-background-color: #3182CE;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 500;
     -fx-font-size: 14px;
-    -fx-padding: 12 24 12 24;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+    -fx-padding: 12px 20px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 2, 0, 0, 1);
+    -fx-min-width: 90px;
+    -fx-min-height: 36px;
+    -fx-border-width: 0;
 }
 
-.modern-button:hover {
-    -fx-background-color: #2574A0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 4);
-    -fx-scale-x: 1.02;
-    -fx-scale-y: 1.02;
+.modern-button:hover, .btn-primary:hover {
+    -fx-background-color: #2C5AA0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 4, 0, 0, 2);
 }
 
-.modern-button:pressed {
-    -fx-background-color: #1F5F85;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);
-    -fx-scale-x: 0.98;
-    -fx-scale-y: 0.98;
+.modern-button:pressed, .btn-primary:pressed {
+    -fx-background-color: #2A4A8B;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 1, 0, 0, 0);
 }
 
-/* Secondary Button */
-.secondary-button {
-    -fx-background-color: #A23B72;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+/* Secondary Button - Professional Gray */
+.secondary-button, .btn-secondary {
+    -fx-background-color: #718096;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 500;
     -fx-font-size: 14px;
-    -fx-padding: 12 24 12 24;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+    -fx-padding: 12px 20px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 2, 0, 0, 1);
+    -fx-min-width: 90px;
+    -fx-min-height: 36px;
+    -fx-border-width: 0;
 }
 
-.secondary-button:hover {
-    -fx-background-color: #8F3366;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 4);
+.secondary-button:hover, .btn-secondary:hover {
+    -fx-background-color: #4A5568;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 4, 0, 0, 2);
 }
 
-/* Success Button */
-.success-button {
-    -fx-background-color: #4ECDC4;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+.secondary-button:pressed, .btn-secondary:pressed {
+    -fx-background-color: #2D3748;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 1, 0, 0, 0);
+}
+
+/* Success Button - Professional Green */
+.success-button, .btn-success {
+    -fx-background-color: #38A169;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 500;
     -fx-font-size: 14px;
-    -fx-padding: 12 24 12 24;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+    -fx-padding: 12px 20px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 2, 0, 0, 1);
+    -fx-min-width: 90px;
+    -fx-min-height: 36px;
+    -fx-border-width: 0;
 }
 
-.success-button:hover {
-    -fx-background-color: #45B7B8;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 4);
+.success-button:hover, .btn-success:hover {
+    -fx-background-color: #2F855A;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 4, 0, 0, 2);
 }
 
-/* Warning Button */
-.warning-button {
-    -fx-background-color: #F18F01;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+.success-button:pressed, .btn-success:pressed {
+    -fx-background-color: #276749;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 1, 0, 0, 0);
+}
+
+/* Warning Button - Professional Orange */
+.warning-button, .btn-warning {
+    -fx-background-color: #DD6B20;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 500;
     -fx-font-size: 14px;
-    -fx-padding: 12 24 12 24;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+    -fx-padding: 12px 20px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 2, 0, 0, 1);
+    -fx-min-width: 90px;
+    -fx-min-height: 36px;
+    -fx-border-width: 0;
 }
 
-.warning-button:hover {
-    -fx-background-color: #D97D01;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 4);
+.warning-button:hover, .btn-warning:hover {
+    -fx-background-color: #C05621;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 4, 0, 0, 2);
 }
 
-/* Error Button */
-.error-button {
-    -fx-background-color: #FF6B6B;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+.warning-button:pressed, .btn-warning:pressed {
+    -fx-background-color: #9C4221;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 1, 0, 0, 0);
+}
+
+/* Danger Button - Professional Red */
+.error-button, .btn-danger {
+    -fx-background-color: #E53E3E;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 500;
     -fx-font-size: 14px;
-    -fx-padding: 12 24 12 24;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+    -fx-padding: 12px 20px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 2, 0, 0, 1);
+    -fx-min-width: 90px;
+    -fx-min-height: 36px;
+    -fx-border-width: 0;
 }
 
-.error-button:hover {
-    -fx-background-color: #FF5252;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 4);
+.error-button:hover, .btn-danger:hover {
+    -fx-background-color: #C53030;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 4, 0, 0, 2);
 }
 
-/* Modern Text Field */
-.modern-text-field {
+.error-button:pressed, .btn-danger:pressed {
+    -fx-background-color: #9B2C2C;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 1, 0, 0, 0);
+}
+
+/* Info Button - Professional Teal */
+.btn-info {
+    -fx-background-color: #319795;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 500;
+    -fx-font-size: 14px;
+    -fx-padding: 12px 20px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 2, 0, 0, 1);
+    -fx-min-width: 90px;
+    -fx-min-height: 36px;
+    -fx-border-width: 0;
+}
+
+.btn-info:hover {
+    -fx-background-color: #2C7A7B;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 4, 0, 0, 2);
+}
+
+.btn-info:pressed {
+    -fx-background-color: #285E61;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 1, 0, 0, 0);
+}
+
+/* Button Sizes */
+.btn-sm {
+    -fx-padding: 8px 16px;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-min-width: 80px;
+    -fx-min-height: 32px;
+}
+
+.btn-md {
+    -fx-padding: 16px 24px;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-min-width: 100px;
+    -fx-min-height: 40px;
+}
+
+.btn-lg {
+    -fx-padding: 24px 32px;
+    -fx-font-size: 16px;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-min-width: 120px;
+    -fx-min-height: 48px;
+}
+
+/* ===== PROFESSIONAL FORM CONTROLS ===== */
+/* Text Fields - Clean and Professional */
+.modern-text-field, .text-field {
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #E9ECEF;
-    -fx-border-width: 2;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 12 16 12 16;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 12px 16px;
     -fx-font-size: 14px;
-    -fx-text-fill: #2C3E50;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+    -fx-text-fill: #2D3748;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 1, 0, 0, 1);
+    -fx-min-height: 40px;
 }
 
-.modern-text-field:focused {
-    -fx-border-color: #2E86AB;
-    -fx-effect: dropshadow(gaussian, rgba(46,134,171,0.3), 4, 0, 0, 0);
+.modern-text-field:focused, .text-field:focused {
+    -fx-border-color: #3182CE;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(49,130,206,0.15), 3, 0, 0, 0);
 }
 
-/* Modern Password Field */
-.modern-password-field {
+/* Password Fields */
+.modern-password-field, .password-field {
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #E9ECEF;
-    -fx-border-width: 2;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 12 16 12 16;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 12px 16px;
     -fx-font-size: 14px;
-    -fx-text-fill: #2C3E50;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+    -fx-text-fill: #2D3748;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 1, 0, 0, 1);
+    -fx-min-height: 40px;
 }
 
-.modern-password-field:focused {
-    -fx-border-color: #2E86AB;
-    -fx-effect: dropshadow(gaussian, rgba(46,134,171,0.3), 4, 0, 0, 0);
+.modern-password-field:focused, .password-field:focused {
+    -fx-border-color: #3182CE;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(49,130,206,0.15), 3, 0, 0, 0);
 }
 
-/* Modern ComboBox */
-.modern-combo-box {
+/* ComboBox */
+.modern-combo-box, .combo-box {
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #E9ECEF;
-    -fx-border-width: 2;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 8 12 8 12;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 12px;
     -fx-font-size: 14px;
-    -fx-text-fill: #2C3E50;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+    -fx-text-fill: #2D3748;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 1, 0, 0, 1);
+    -fx-min-height: 40px;
 }
 
-.modern-combo-box:focused {
-    -fx-border-color: #2E86AB;
-    -fx-effect: dropshadow(gaussian, rgba(46,134,171,0.3), 4, 0, 0, 0);
+.modern-combo-box:focused, .combo-box:focused {
+    -fx-border-color: #3182CE;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(49,130,206,0.15), 3, 0, 0, 0);
 }
 
-/* Modern Card */
-.modern-card {
+/* DatePicker */
+.modern-date-picker, .date-picker {
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 12;
-    -fx-border-radius: 12;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);
-    -fx-padding: 24;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 12px 16px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #2D3748;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 1, 0, 0, 1);
+    -fx-min-height: 40px;
 }
 
-.modern-card:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 6);
+.modern-date-picker:focused, .date-picker:focused {
+    -fx-border-color: #3182CE;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(49,130,206,0.15), 3, 0, 0, 0);
 }
 
-/* Header Styles */
+/* ===== PROFESSIONAL TYPOGRAPHY ===== */
 .header-title {
-    -fx-font-size: 28px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2C3E50;
+    -fx-font-size: 24px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #1A202C;
 }
 
 .header-subtitle {
     -fx-font-size: 16px;
-    -fx-text-fill: #7F8C8D;
+    -fx-font-weight: 400;
+    -fx-text-fill: #718096;
 }
 
 .section-title {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2C3E50;
+    -fx-font-size: 18px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #2D3748;
 }
 
-/* Navigation Styles */
-.nav-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: #2C3E50;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-padding: 16 24 16 24;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
-    -fx-cursor: hand;
-}
-
-.nav-button:hover {
-    -fx-background-color: #2E86AB;
-    -fx-text-fill: white;
-}
-
-.nav-button.active {
-    -fx-background-color: #2E86AB;
-    -fx-text-fill: white;
-}
-
-/* Table Styles */
-.modern-table-view {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #E9ECEF;
-    -fx-border-width: 1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-}
-
-.modern-table-view .column-header {
-    -fx-background-color: #2E86AB;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-padding: 12;
-}
-
-.modern-table-view .table-row-cell {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #E9ECEF;
-    -fx-border-width: 0 0 1 0;
-}
-
-.modern-table-view .table-row-cell:hover {
-    -fx-background-color: #E3F2FD;
-}
-
-.modern-table-view .table-row-cell:selected {
-    -fx-background-color: #BBDEFB;
-}
-
-/* Form Styles */
 .form-label {
     -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2C3E50;
+    -fx-font-weight: 500;
+    -fx-text-fill: #4A5568;
 }
 
-/* Status Indicators */
-.status-active {
-    -fx-background-color: #4ECDC4;
-    -fx-text-fill: white;
-    -fx-padding: 4 8 4 8;
-    -fx-background-radius: 12;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-}
-
-.status-inactive {
-    -fx-background-color: #FF6B6B;
-    -fx-text-fill: white;
-    -fx-padding: 4 8 4 8;
-    -fx-background-radius: 12;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-}
-
-/* Sidebar */
-.sidebar {
+/* ===== PROFESSIONAL CARDS ===== */
+.modern-card, .stats-card {
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #E9ECEF;
-    -fx-border-width: 0 1 0 0;
-    -fx-padding: 20;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 2);
+    -fx-padding: 20px;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
 }
 
-/* Content Area */
-.content-area {
-    -fx-background-color: #F8F9FA;
-    -fx-padding: 20;
-}
-
-/* Profile Photo */
-.profile-photo {
-    -fx-background-radius: 50;
-    -fx-border-radius: 50;
-    -fx-border-color: #E9ECEF;
-    -fx-border-width: 2;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
-}
-
-/* Module Cards */
-.module-card {
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 16;
-    -fx-border-radius: 16;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 4);
-    -fx-padding: 20;
-    -fx-cursor: hand;
-}
-
-.module-card:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 6);
-    -fx-scale-x: 1.02;
-    -fx-scale-y: 1.02;
-}
-
-/* Dashboard Stats */
-.stats-card {
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 12;
-    -fx-border-radius: 12;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 3);
-    -fx-padding: 20;
+.modern-card:hover, .stats-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);
 }
 
 .stats-number {
-    -fx-font-size: 32px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2E86AB;
+    -fx-font-size: 28px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #3182CE;
 }
 
 .stats-label {
     -fx-font-size: 14px;
-    -fx-text-fill: #7F8C8D;
+    -fx-font-weight: 500;
+    -fx-text-fill: #718096;
 }
 
-/* Loading Spinner */
-.loading-spinner {
-    -fx-progress-color: #2E86AB;
+/* ===== PROFESSIONAL CONTENT AREAS ===== */
+.content-area {
+    -fx-background-color: #FAFBFC;
+    -fx-padding: 24px;
 }
 
-/* Notification */
-.notification {
+.form-section {
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 4);
-    -fx-padding: 16;
-}
-
-.notification.success {
-    -fx-border-color: #4ECDC4;
-    -fx-border-width: 0 0 0 4;
-}
-
-.notification.error {
-    -fx-border-color: #FF6B6B;
-    -fx-border-width: 0 0 0 4;
-}
-
-.notification.warning {
-    -fx-border-color: #F18F01;
-    -fx-border-width: 0 0 0 4;
-}
-
-.notification.info {
-    -fx-border-color: #2E86AB;
-    -fx-border-width: 0 0 0 4;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 2, 0, 0, 1);
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
 }

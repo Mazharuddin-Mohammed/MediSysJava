@@ -191,6 +191,22 @@ public class Patient {
         return 0;
     }
 
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.createdDate = registrationDate.atStartOfDay();
+    }
+
+    public LocalDate getRegistrationDate() {
+        return createdDate != null ? createdDate.toLocalDate() : null;
+    }
+
+    public String getPhotoPath() {
+        return profilePhotoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.profilePhotoPath = photoPath;
+    }
+
     @Override
     public String toString() {
         return getFullName() + " (" + patientId + ")";

@@ -91,52 +91,51 @@ public abstract class BaseForm {
     }
     
     /**
-     * Create a consistent primary button
+     * Create a consistent primary button using StyleManager
      */
     protected Button createPrimaryButton(String text, Runnable action) {
-        Button button = new Button(text);
-        button.getStyleClass().add("primary-button");
-        button.setStyle("-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-font-size: 14px; -fx-background-radius: 6; -fx-cursor: hand;");
+        Button button = com.medisys.desktop.util.StyleManager.createPrimaryButton(text);
         button.setOnAction(e -> action.run());
-        
-        // Add hover effect
-        button.setOnMouseEntered(e -> button.setStyle(button.getStyle() + "-fx-background-color: #229954;"));
-        button.setOnMouseExited(e -> button.setStyle(button.getStyle().replace("-fx-background-color: #229954;", "")));
-        
         return button;
     }
-    
+
     /**
-     * Create a consistent secondary button
+     * Create a secondary button
      */
     protected Button createSecondaryButton(String text, Runnable action) {
-        Button button = new Button(text);
-        button.getStyleClass().add("secondary-button");
-        button.setStyle("-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-font-size: 14px; -fx-background-radius: 6; -fx-cursor: hand;");
+        Button button = com.medisys.desktop.util.StyleManager.createSecondaryButton(text);
         button.setOnAction(e -> action.run());
-        
-        // Add hover effect
-        button.setOnMouseEntered(e -> button.setStyle(button.getStyle() + "-fx-background-color: #7f8c8d;"));
-        button.setOnMouseExited(e -> button.setStyle(button.getStyle().replace("-fx-background-color: #7f8c8d;", "")));
-        
+        return button;
+    }
+
+    /**
+     * Create a success button
+     */
+    protected Button createSuccessButton(String text, Runnable action) {
+        Button button = com.medisys.desktop.util.StyleManager.createSuccessButton(text);
+        button.setOnAction(e -> action.run());
+        return button;
+    }
+
+    /**
+     * Create a warning button
+     */
+    protected Button createWarningButton(String text, Runnable action) {
+        Button button = com.medisys.desktop.util.StyleManager.createWarningButton(text);
+        button.setOnAction(e -> action.run());
+        return button;
+    }
+
+    /**
+     * Create a danger button
+     */
+    protected Button createDangerButton(String text, Runnable action) {
+        Button button = com.medisys.desktop.util.StyleManager.createDangerButton(text);
+        button.setOnAction(e -> action.run());
         return button;
     }
     
-    /**
-     * Create a consistent danger button
-     */
-    protected Button createDangerButton(String text, Runnable action) {
-        Button button = new Button(text);
-        button.getStyleClass().add("danger-button");
-        button.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 24; -fx-font-size: 14px; -fx-background-radius: 6; -fx-cursor: hand;");
-        button.setOnAction(e -> action.run());
-        
-        // Add hover effect
-        button.setOnMouseEntered(e -> button.setStyle(button.getStyle() + "-fx-background-color: #c0392b;"));
-        button.setOnMouseExited(e -> button.setStyle(button.getStyle().replace("-fx-background-color: #c0392b;", "")));
-        
-        return button;
-    }
+
     
     /**
      * Create a consistent info button

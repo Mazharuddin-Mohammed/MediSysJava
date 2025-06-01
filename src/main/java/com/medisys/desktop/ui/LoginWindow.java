@@ -2,15 +2,18 @@ package com.medisys.desktop.ui;
 
 import com.medisys.desktop.MediSysApp;
 import com.medisys.desktop.model.User;
-// import com.medisys.desktop.service.AuthService;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -62,7 +65,7 @@ public class LoginWindow {
         brandingSide.setAlignment(Pos.CENTER);
         brandingSide.setPadding(new Insets(60));
         brandingSide.setStyle("""
-            -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -fx-background-color: #1A202C;
             """);
         
         // Logo/Icon with actual logo image
@@ -98,7 +101,7 @@ public class LoginWindow {
             logoText.setStyle("""
                 -fx-font-size: 16px;
                 -fx-font-weight: bold;
-                -fx-fill: #2E86AB;
+                -fx-fill: #3182CE;
                 """);
 
             logoBox.getChildren().addAll(logoImageView, logoText);
@@ -120,7 +123,7 @@ public class LoginWindow {
             Text crossSymbol = new Text("✚");
             crossSymbol.setStyle("""
                 -fx-font-size: 48px;
-                -fx-fill: #2E86AB;
+                -fx-fill: #3182CE;
                 """);
 
             // MediSys text
@@ -128,7 +131,7 @@ public class LoginWindow {
             logoText.setStyle("""
                 -fx-font-size: 16px;
                 -fx-font-weight: bold;
-                -fx-fill: #2E86AB;
+                -fx-fill: #3182CE;
                 """);
 
             logoBox.getChildren().addAll(crossSymbol, logoText);
@@ -139,16 +142,16 @@ public class LoginWindow {
         // Title
         Text title = new Text("MediSys");
         title.setStyle("""
-            -fx-font-size: 48px;
-            -fx-font-weight: bold;
+            -fx-font-size: 36px;
+            -fx-font-weight: 600;
             -fx-fill: white;
             """);
-        
+
         // Subtitle
-        Text subtitle = new Text("Healthcare Management System");
+        Text subtitle = new Text("Enterprise Healthcare Management");
         subtitle.setStyle("""
-            -fx-font-size: 18px;
-            -fx-fill: rgba(255,255,255,0.9);
+            -fx-font-size: 16px;
+            -fx-fill: rgba(255,255,255,0.85);
             """);
         
         // Features
@@ -157,18 +160,19 @@ public class LoginWindow {
         features.setPadding(new Insets(30, 0, 0, 0));
         
         String[] featureList = {
-            "👥 Patient Management",
-            "👨‍⚕️ Doctor Scheduling",
-            "💰 Financial Tracking",
-            "📊 Advanced Analytics",
-            "🔒 Secure & Compliant"
+            "• Comprehensive Patient Records",
+            "• Clinical Workflow Management",
+            "• Financial & Billing Integration",
+            "• Advanced Reporting & Analytics",
+            "• HIPAA Compliant & Secure"
         };
         
         for (String feature : featureList) {
             Text featureText = new Text(feature);
             featureText.setStyle("""
-                -fx-font-size: 16px;
-                -fx-fill: rgba(255,255,255,0.8);
+                -fx-font-size: 14px;
+                -fx-fill: rgba(255,255,255,0.9);
+                -fx-font-weight: 400;
                 """);
             features.getChildren().add(featureText);
         }
