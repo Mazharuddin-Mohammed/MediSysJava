@@ -420,8 +420,8 @@ public class HelpModule {
                 return "Detailed help content for '" + topic + "' is being prepared. " +
                        "This comprehensive help system covers all aspects of the MediSys Hospital Management System.\n\n" +
                        "For immediate assistance, please contact our support team:\n" +
-                       "📧 Email: support@medisys.com\n" +
-                       "📞 Phone: +1-800-MEDISYS\n\n" +
+                       "📧 Email: mazharuddin.mohammed.official@gmail.com\n" +
+                       "📞 Phone: +91-9347607780\n\n" +
                        "Our support team is available Monday through Friday, 9 AM to 6 PM.";
         }
     }
