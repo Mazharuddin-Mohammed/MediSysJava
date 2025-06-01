@@ -211,10 +211,8 @@ public class PatientsModule {
             private final HBox actionBox = new HBox(5);
 
             {
-                editBtn.getStyleClass().add("secondary-button");
-                editBtn.setStyle("-fx-font-size: 10px; -fx-padding: 4 8 4 8;");
-                deleteBtn.getStyleClass().add("error-button");
-                deleteBtn.setStyle("-fx-font-size: 10px; -fx-padding: 4 8 4 8;");
+                editBtn.getStyleClass().addAll("action-button", "edit");
+                deleteBtn.getStyleClass().addAll("action-button", "delete");
                 actionBox.getChildren().addAll(editBtn, deleteBtn);
                 actionBox.setAlignment(Pos.CENTER);
             }

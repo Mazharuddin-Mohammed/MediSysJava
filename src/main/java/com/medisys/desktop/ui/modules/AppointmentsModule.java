@@ -202,10 +202,8 @@ public class AppointmentsModule {
             private final HBox actionBox = new HBox(5);
 
             {
-                editBtn.getStyleClass().add("secondary-button");
-                editBtn.setStyle("-fx-font-size: 10px; -fx-padding: 4 8 4 8;");
-                cancelBtn.getStyleClass().add("error-button");
-                cancelBtn.setStyle("-fx-font-size: 10px; -fx-padding: 4 8 4 8;");
+                editBtn.getStyleClass().addAll("action-button", "edit");
+                cancelBtn.getStyleClass().addAll("action-button", "delete");
                 actionBox.getChildren().addAll(editBtn, cancelBtn);
                 actionBox.setAlignment(Pos.CENTER);
             }

@@ -1,53 +1,130 @@
-# MediSys - Enterprise Hospital Management System
+# MediSys - Enterprise Healthcare Management System
 
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.java.net/projects/jdk/17/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-22-blue.svg)](https://openjfx.io/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.0-green.svg)](https://spring.io/projects/spring-boot)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16.9-blue.svg)](https://www.postgresql.org/)
-[![Redis](https://img.shields.io/badge/Redis-7.0-red.svg)](https://redis.io/)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
-MediSys is a production-ready, enterprise-grade hospital management system built with modern Java technologies. It features a robust JavaFX desktop application with Spring Boot backend, PostgreSQL database, Redis caching, comprehensive monitoring, and enterprise-level security.
+**MediSys** is a modern, enterprise-grade healthcare management system featuring a vibrant JavaFX desktop application with comprehensive patient management, clinical workflows, and financial operations. Built with professional-grade architecture and designed for healthcare organizations of all sizes.
 
 ![MediSys Banner](src/main/resources/images/banner.jpg)
 
-## 🚀 Key Features
+## 📸 Application Screenshots
 
-### 🏥 **Core Hospital Management**
-- **Patient Management**: Complete patient lifecycle management with medical history
-- **Doctor Management**: Physician profiles, specializations, and department assignments
-- **Department Management**: Organizational structure and resource allocation
-- **Finance Management**: Billing, payments, and financial reporting
-- **Audit Logging**: Comprehensive activity tracking and compliance
+### 🔐 Professional Login Interface
+![Login Window](docs/screenshots/login-window.png)
+*Secure login with enterprise-grade authentication and vibrant blue branding*
 
-### 🔒 **Enterprise Security**
-- **Multi-factor Authentication**: Secure login with role-based access control
-- **Session Management**: JWT-based sessions with automatic timeout
-- **Field-level Encryption**: Sensitive data protection with AES-256
-- **Rate Limiting**: Brute force protection and account lockout
-- **Input Validation**: SQL injection and XSS prevention
+### 🏠 Main Dashboard
+![Main Dashboard](docs/screenshots/main-dashboard.png)
+*Comprehensive overview with real-time statistics and quick access modules*
 
-### ⚡ **Performance & Scalability**
-- **Redis Caching**: Multi-tier caching with intelligent TTL management
-- **Connection Pooling**: HikariCP for optimal database performance
-- **Async Processing**: Non-blocking operations for heavy tasks
-- **Memory Management**: Leak detection and optimization
-- **Load Balancing Ready**: Horizontal scaling support
+### 👥 Patient Management
+![Patient Management](docs/screenshots/patient-management.png)
+*Complete patient lifecycle management with search, filtering, and detailed records*
 
-### 📊 **Monitoring & Observability**
-- **Real-time Metrics**: Prometheus-compatible metrics with Micrometer
-- **Health Checks**: Comprehensive system health monitoring
-- **Performance Tracking**: Database, cache, and application performance
-- **Error Tracking**: Centralized error logging and alerting
-- **Resource Monitoring**: Memory, CPU, and connection pool metrics
+### 👨‍⚕️ Doctor Management
+![Doctor Management](docs/screenshots/doctor-management.png)
+*Physician profiles, specializations, and department assignments*
 
-### 🧪 **Testing & Quality Assurance**
-- **Unit Testing**: Comprehensive test coverage with JUnit 5
-- **Integration Testing**: Database and service layer testing
-- **Security Testing**: Authentication and authorization testing
-- **Performance Testing**: Load and stress testing capabilities
-- **Mocking**: Mockito for isolated unit testing
+### 🏥 Department Management
+![Department Management](docs/screenshots/department-management.png)
+*Organizational structure and resource allocation management*
+
+### 📅 Appointment Scheduling
+![Appointment Scheduling](docs/screenshots/appointment-scheduling.png)
+*Calendar-based appointment management with filtering and status tracking*
+
+### 💰 Financial Management
+![Financial Management](docs/screenshots/financial-management.png)
+*Comprehensive billing, payments, and financial reporting*
+
+### 📊 Reports & Analytics
+![Reports Module](docs/screenshots/reports-module.png)
+*Advanced reporting with PDF/CSV export capabilities*
+
+## 🚀 Currently Implemented Features
+
+### 🎨 **Modern User Interface**
+- **Vibrant Enterprise Design**: Professional color palette with vibrant blues, purples, greens, and oranges
+- **Consistent Typography**: Uniform font family (Segoe UI/Roboto) across all components
+- **Uniform Button Styling**: Standardized button sizes (120px × 42px) with center-aligned text
+- **Responsive Layout**: Adaptive interface that works across different screen sizes
+- **Professional Branding**: MediSys logo integration with healthcare-appropriate styling
+
+### 🏥 **Core Healthcare Management**
+- **Patient Management**:
+  - Complete patient registration and profile management
+  - Patient search and filtering capabilities
+  - Medical history tracking and documentation
+  - Patient photo upload and management
+  - Comprehensive patient data forms with validation
+
+- **Doctor Management**:
+  - Physician profile creation and management
+  - Specialization and department assignment
+  - Doctor photo upload and management
+  - Professional credentials tracking
+  - Workload and schedule management
+
+- **Department Management**:
+  - Hospital department creation and organization
+  - Department head assignment and management
+  - Resource allocation and tracking
+  - Department-specific configurations
+  - Staff assignment and management
+
+### 📅 **Appointment System**
+- **Appointment Scheduling**:
+  - Calendar-based appointment booking
+  - Doctor availability management
+  - Patient appointment history
+  - Appointment status tracking (Scheduled, Completed, Cancelled)
+  - Time slot management and conflict prevention
+
+### 💰 **Financial Operations**
+- **Billing Management**:
+  - Patient billing and invoice generation
+  - Payment processing and tracking
+  - Insurance claim management
+  - Financial transaction history
+  - Payment status monitoring
+
+### 📊 **Reporting & Analytics**
+- **Comprehensive Reports**:
+  - Patient reports with filtering options
+  - Doctor performance reports
+  - Department-wise analytics
+  - Financial reports and summaries
+  - Custom date range filtering
+
+- **Export Capabilities**:
+  - PDF report generation with watermarked logos
+  - CSV export for data analysis
+  - All reports and department-wise exports
+  - Professional report formatting
+
+### 🔐 **Security & Authentication**
+- **Role-Based Access Control**:
+  - Admin, Doctor, Finance, and Department Head roles
+  - Secure login with username/password authentication
+  - Session management and user state tracking
+  - Access control for different modules based on user roles
+
+### 🛠 **Technical Features**
+- **Database Integration**:
+  - PostgreSQL database with comprehensive schema
+  - Sample data generation for testing and demonstration
+  - Data persistence and transaction management
+  - Optimized queries for performance
+
+- **Modern Architecture**:
+  - JavaFX 22 for rich desktop UI
+  - Spring Boot 3.3.0 backend integration
+  - Maven build system with dependency management
+  - Modular code structure for maintainability
 
 ## 🏗️ Architecture Overview
 
@@ -78,48 +155,61 @@ MediSys is a production-ready, enterprise-grade hospital management system built
 - **Testing**: JUnit 5, Mockito, Testcontainers
 - **Build**: Maven 3.9+ with multi-module support
 
-## 🏥 Core Features
+## 🏥 Module Details
 
-### Admin Dashboard
-- System overview with key metrics
-- User management and access control
-- Comprehensive audit logging for security and compliance
-- Quick access to all modules
+### 🏠 **Main Dashboard**
+- **System Overview**: Real-time statistics and key performance indicators
+- **Quick Access Modules**: Direct navigation to all major system components
+- **User Session Management**: Current user information and role-based access
+- **Statistics Cards**: Patient count, doctor count, appointment metrics, and financial summaries
+- **Professional Layout**: Clean, organized interface with vibrant enterprise styling
 
-### Patients Module
-- Complete patient record management
-- Add, edit, and delete patient information
-- View patient medical history
-- Search functionality for quick access to patient records
-- Patient photo management with placeholder images
+### 👥 **Patients Module**
+- **Patient Registration**: Comprehensive patient onboarding with detailed forms
+- **Patient Search & Filter**: Advanced search capabilities with multiple criteria
+- **Medical Records**: Complete patient history and medical documentation
+- **Photo Management**: Patient photo upload with placeholder image support
+- **Data Validation**: Form validation to ensure data integrity and completeness
+- **CRUD Operations**: Full create, read, update, delete functionality for patient records
 
-### Departments Module
-- Department creation and management
-- Track department resources and staff
-- Department-specific settings and configurations
+### 👨‍⚕️ **Doctors Module**
+- **Doctor Profiles**: Detailed physician information and credentials management
+- **Specialization Tracking**: Medical specialties and areas of expertise
+- **Department Assignment**: Link doctors to specific hospital departments
+- **Photo Management**: Professional headshot upload and management
+- **Schedule Management**: Doctor availability and working hours
+- **Performance Metrics**: Track doctor workload and patient assignments
 
-### Doctors Module
-- Doctor profile management
-- Specialization and department assignment
-- Track doctor workload and performance
-- Doctor photo management with placeholder images
+### 🏥 **Departments Module**
+- **Department Creation**: Establish and organize hospital departments
+- **Resource Management**: Track department resources, equipment, and facilities
+- **Staff Assignment**: Assign doctors and staff to specific departments
+- **Department Head Management**: Designate and manage department leadership
+- **Configuration Settings**: Department-specific settings and operational parameters
 
-### Appointments Module
-- Calendar-based appointment scheduling
-- Filter appointments by date, doctor, or status
-- Appointment creation, modification, and cancellation
+### 📅 **Appointments Module**
+- **Appointment Scheduling**: Calendar-based booking system with time slot management
+- **Doctor Availability**: Real-time availability checking and conflict prevention
+- **Patient History**: Complete appointment history for each patient
+- **Status Tracking**: Monitor appointment status (Scheduled, Completed, Cancelled, No-Show)
+- **Filtering & Search**: Advanced filtering by date, doctor, patient, or status
+- **Appointment Management**: Modify, reschedule, or cancel existing appointments
 
-### Finance Module
-- **Billing Management**: Comprehensive billing and payment tracking
-- **Financial Reporting**: Advanced analytics and reporting
-- **Insurance Claims**: Automated claim processing and tracking
-- **Payment History**: Complete transaction history and reconciliation
+### 💰 **Finance Module**
+- **Billing System**: Generate and manage patient bills and invoices
+- **Payment Processing**: Track payments, outstanding balances, and payment methods
+- **Insurance Management**: Handle insurance claims and coverage verification
+- **Financial Reporting**: Comprehensive financial analytics and reporting
+- **Transaction History**: Complete audit trail of all financial transactions
+- **Revenue Tracking**: Monitor hospital revenue streams and financial performance
 
-### Reports Module
-- **Dynamic Reports**: Generate various types of reports (patient, doctor, financial)
-- **Date Range Filtering**: Flexible filtering for data analysis
-- **Export Functionality**: Multiple export formats (PDF, Excel, CSV)
-- **Scheduled Reports**: Automated report generation and delivery
+### 📊 **Reports Module**
+- **Dynamic Report Generation**: Create custom reports based on various criteria
+- **Multi-Format Export**: Export reports in PDF and CSV formats
+- **Date Range Filtering**: Flexible date-based filtering for historical analysis
+- **Department-Wise Reports**: Generate reports specific to individual departments
+- **Watermarked PDFs**: Professional PDF reports with MediSys branding
+- **Data Analytics**: Comprehensive data analysis and visualization capabilities
 
 ## 🛠️ Installation & Setup
 
@@ -217,15 +307,30 @@ docker run -d --name medisys-app \
 
 ## 🔐 Default Login Credentials
 
-### Admin User
+### System Administrator
 - **Username**: `admin`
 - **Password**: `admin123`
-- **Role**: Administrator (Full system access)
+- **Role**: System Administrator
+- **Access**: Full system access to all modules and administrative functions
 
-### Test Users
-- **Doctor**: `doctor` / `doctor123`
-- **Finance**: `finance` / `finance123`
-- **Department Head**: `dept_head` / `dept123`
+### Healthcare Staff
+- **Doctor Account**:
+  - **Username**: `doctor`
+  - **Password**: `admin123`
+  - **Role**: Medical Doctor
+  - **Access**: Patient management, appointments, medical records
+
+- **Finance Account**:
+  - **Username**: `finance`
+  - **Password**: `admin123`
+  - **Role**: Finance Manager
+  - **Access**: Billing, payments, financial reports, revenue management
+
+### Quick Start
+1. Launch the application with `mvn javafx:run`
+2. Use any of the above credentials to log in
+3. Explore the different modules based on your role
+4. Sample data is automatically loaded for demonstration purposes
 
 ## 🧪 Testing
 

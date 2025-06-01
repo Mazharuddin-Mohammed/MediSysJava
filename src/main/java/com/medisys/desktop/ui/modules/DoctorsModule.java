@@ -214,10 +214,8 @@ public class DoctorsModule {
             private final HBox actionBox = new HBox(5);
 
             {
-                editBtn.getStyleClass().add("secondary-button");
-                editBtn.setStyle("-fx-font-size: 10px; -fx-padding: 4 8 4 8;");
-                deleteBtn.getStyleClass().add("error-button");
-                deleteBtn.setStyle("-fx-font-size: 10px; -fx-padding: 4 8 4 8;");
+                editBtn.getStyleClass().addAll("action-button", "edit");
+                deleteBtn.getStyleClass().addAll("action-button", "delete");
                 actionBox.getChildren().addAll(editBtn, deleteBtn);
                 actionBox.setAlignment(Pos.CENTER);
             }
@@ -252,11 +250,182 @@ public class DoctorsModule {
     }
 
     private void showDoctorDialog(Doctor doctor, String title) {
-        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+        Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle(title);
-        dialog.setHeaderText("Doctor Management");
-        dialog.setContentText("Doctor registration/editing form will be implemented here with:\n• Photo upload\n• Professional details\n• Schedule management\n• Specialization settings");
-        dialog.showAndWait();
+        dialog.setHeaderText(null);
+
+        // Create form content
+        VBox formContainer = new VBox();
+        formContainer.getStyleClass().add("form-container");
+
+        // Form title
+        Text formTitle = new Text(title);
+        formTitle.getStyleClass().add("form-title");
+
+        // Personal Information Section
+        Text personalSection = new Text("Personal Information");
+        personalSection.getStyleClass().add("form-section-title");
+
+        // Form fields
+        GridPane personalGrid = new GridPane();
+        personalGrid.setHgap(15);
+        personalGrid.setVgap(15);
+        personalGrid.getStyleClass().add("form-row");
+
+        // First Name
+        Label firstNameLabel = new Label("First Name:");
+        firstNameLabel.getStyleClass().add("form-field-label");
+        TextField firstNameField = new TextField();
+        firstNameField.getStyleClass().add("form-field-input");
+        firstNameField.setPromptText("Enter first name");
+        if (doctor != null) firstNameField.setText(doctor.getFirstName());
+
+        // Last Name
+        Label lastNameLabel = new Label("Last Name:");
+        lastNameLabel.getStyleClass().add("form-field-label");
+        TextField lastNameField = new TextField();
+        lastNameField.getStyleClass().add("form-field-input");
+        lastNameField.setPromptText("Enter last name");
+        if (doctor != null) lastNameField.setText(doctor.getLastName());
+
+        // Email
+        Label emailLabel = new Label("Email:");
+        emailLabel.getStyleClass().add("form-field-label");
+        TextField emailField = new TextField();
+        emailField.getStyleClass().add("form-field-input");
+        emailField.setPromptText("Enter email address");
+        if (doctor != null) emailField.setText(doctor.getEmail());
+
+        // Phone
+        Label phoneLabel = new Label("Phone:");
+        phoneLabel.getStyleClass().add("form-field-label");
+        TextField phoneField = new TextField();
+        phoneField.getStyleClass().add("form-field-input");
+        phoneField.setPromptText("Enter phone number");
+        if (doctor != null) phoneField.setText(doctor.getPhone());
+
+        // Professional Information Section
+        Text professionalSection = new Text("Professional Information");
+        professionalSection.getStyleClass().add("form-section-title");
+
+        GridPane professionalGrid = new GridPane();
+        professionalGrid.setHgap(15);
+        professionalGrid.setVgap(15);
+        professionalGrid.getStyleClass().add("form-row");
+
+        // Doctor ID
+        Label doctorIdLabel = new Label("Doctor ID:");
+        doctorIdLabel.getStyleClass().add("form-field-label");
+        TextField doctorIdField = new TextField();
+        doctorIdField.getStyleClass().add("form-field-input");
+        doctorIdField.setPromptText("Enter doctor ID");
+        if (doctor != null) doctorIdField.setText(doctor.getDoctorId());
+
+        // Specialization
+        Label specializationLabel = new Label("Specialization:");
+        specializationLabel.getStyleClass().add("form-field-label");
+        ComboBox<String> specializationField = new ComboBox<>();
+        specializationField.getStyleClass().add("form-field-input");
+        specializationField.getItems().addAll("Cardiology", "Neurology", "Orthopedics", "Pediatrics", "Dermatology", "General Medicine", "Surgery", "Radiology");
+        if (doctor != null) specializationField.setValue(doctor.getSpecialization());
+
+        // Department
+        Label departmentLabel = new Label("Department:");
+        departmentLabel.getStyleClass().add("form-field-label");
+        ComboBox<String> departmentField = new ComboBox<>();
+        departmentField.getStyleClass().add("form-field-input");
+        departmentField.getItems().addAll("Emergency", "ICU", "Surgery", "Outpatient", "Radiology", "Cardiology", "Neurology");
+        if (doctor != null) departmentField.setValue(doctor.getDepartment());
+
+        // Qualification
+        Label qualificationLabel = new Label("Qualification:");
+        qualificationLabel.getStyleClass().add("form-field-label");
+        TextField qualificationField = new TextField();
+        qualificationField.getStyleClass().add("form-field-input");
+        qualificationField.setPromptText("Enter qualifications");
+        if (doctor != null) qualificationField.setText(doctor.getQualification());
+
+        // Add fields to grids
+        personalGrid.add(firstNameLabel, 0, 0);
+        personalGrid.add(firstNameField, 1, 0);
+        personalGrid.add(lastNameLabel, 0, 1);
+        personalGrid.add(lastNameField, 1, 1);
+        personalGrid.add(emailLabel, 0, 2);
+        personalGrid.add(emailField, 1, 2);
+        personalGrid.add(phoneLabel, 0, 3);
+        personalGrid.add(phoneField, 1, 3);
+
+        professionalGrid.add(doctorIdLabel, 0, 0);
+        professionalGrid.add(doctorIdField, 1, 0);
+        professionalGrid.add(specializationLabel, 0, 1);
+        professionalGrid.add(specializationField, 1, 1);
+        professionalGrid.add(departmentLabel, 0, 2);
+        professionalGrid.add(departmentField, 1, 2);
+        professionalGrid.add(qualificationLabel, 0, 3);
+        professionalGrid.add(qualificationField, 1, 3);
+
+        // Add all sections to form
+        formContainer.getChildren().addAll(
+            formTitle,
+            personalSection,
+            personalGrid,
+            professionalSection,
+            professionalGrid
+        );
+
+        // Set dialog content
+        dialog.getDialogPane().setContent(formContainer);
+        dialog.getDialogPane().getStyleClass().add("form-dialog");
+
+        // Add buttons
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        // Style buttons
+        Button okButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);
+        Button cancelButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.CANCEL);
+        okButton.getStyleClass().add("modern-button");
+        cancelButton.getStyleClass().add("secondary-button");
+
+        // Handle result
+        dialog.showAndWait().ifPresent(result -> {
+            if (result == ButtonType.OK) {
+                try {
+                    if (doctor == null) {
+                        // Create new doctor
+                        Doctor newDoctor = new Doctor(
+                            firstNameField.getText(),
+                            lastNameField.getText(),
+                            specializationField.getValue(),
+                            emailField.getText(),
+                            phoneField.getText()
+                        );
+                        newDoctor.setDoctorId(doctorIdField.getText());
+                        newDoctor.setDepartment(departmentField.getValue());
+                        newDoctor.setQualification(qualificationField.getText());
+                        newDoctor.setJoiningDate(LocalDate.now());
+                        newDoctor.setActive(true);
+
+                        doctorsList.add(newDoctor);
+                        showAlert("Success", "Doctor added successfully!");
+                    } else {
+                        // Update existing doctor
+                        doctor.setFirstName(firstNameField.getText());
+                        doctor.setLastName(lastNameField.getText());
+                        doctor.setEmail(emailField.getText());
+                        doctor.setPhone(phoneField.getText());
+                        doctor.setDoctorId(doctorIdField.getText());
+                        doctor.setSpecialization(specializationField.getValue());
+                        doctor.setDepartment(departmentField.getValue());
+                        doctor.setQualification(qualificationField.getText());
+
+                        doctorsTable.refresh();
+                        showAlert("Success", "Doctor updated successfully!");
+                    }
+                } catch (Exception e) {
+                    showAlert("Error", "Failed to save doctor: " + e.getMessage());
+                }
+            }
+        });
     }
 
     private void showDeleteDoctorDialog(Doctor doctor) {
