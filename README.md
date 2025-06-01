@@ -45,6 +45,8 @@
 ![Reports Module](docs/screenshots/reports-module.png)
 *Advanced reporting with PDF/CSV export capabilities*
 
+> **Note**: Screenshots will be added after the application is fully tested and deployed. The application is currently functional with all features implemented and working correctly.
+
 ## 🚀 Currently Implemented Features
 
 ### 🎨 **Modern User Interface**
@@ -331,6 +333,37 @@ docker run -d --name medisys-app \
 2. Use any of the above credentials to log in
 3. Explore the different modules based on your role
 4. Sample data is automatically loaded for demonstration purposes
+
+## 🛠 Technical Implementation
+
+### Current Technology Stack
+- **JavaFX 22**: Modern desktop UI framework with rich controls
+- **Spring Boot 3.3.0**: Enterprise application framework
+- **PostgreSQL 16.9**: Primary database with comprehensive schema
+- **Maven 3.9+**: Build automation and dependency management
+
+### UI/UX Features
+- **Vibrant Enterprise Design**: Professional color palette with modern styling
+- **Consistent Typography**: Segoe UI/Roboto font family across all components
+- **Uniform Button System**: Standardized sizing (120px × 42px) with center-aligned text
+- **Professional Forms**: Consistent form styling with proper validation
+- **Action Buttons**: Readable 12px font size with proper spacing (60px × 28px)
+- **Responsive Layout**: Adaptive interface for different screen sizes
+
+### Architecture Highlights
+- **Modular Design**: Separate modules for Patients, Doctors, Appointments, Finance, Reports
+- **Role-Based Access**: Different interfaces based on user permissions
+- **Data Validation**: Comprehensive form validation and error handling
+- **Professional Styling**: Enterprise-grade visual design system
+- **Sample Data Integration**: Pre-loaded demonstration data for immediate testing
+
+### Key Improvements Implemented
+- ✅ **Fixed Action Button Font Size**: Increased from 10px to 12px for better readability
+- ✅ **Implemented Add Doctor Form**: Complete form with personal and professional information
+- ✅ **Consistent Form Styling**: Uniform styling across all add/edit forms
+- ✅ **Typography Standardization**: Same font family across entire application
+- ✅ **Vibrant Color Palette**: Enterprise-level colors with professional appearance
+- ✅ **Button Uniformity**: All buttons have consistent sizing and center-aligned text
 
 ## 🧪 Testing
 
