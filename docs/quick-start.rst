@@ -12,7 +12,7 @@ Step 1: Prerequisites Check (1 minute)
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Check Java version (must be 17+)
    ==========
    java -version
@@ -32,7 +32,7 @@ Step 2: Download & Run (2 minutes)
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Option A: Download pre-built release (Recommended)
    ==========
    wget https://github.com/Mazharuddin-Mohammed/MediSysJava/releases/latest/download/medisys-1.0.0.jar
@@ -71,9 +71,9 @@ Step 4: Explore Features (1 minute)
 ~~~~~~~~~~
 #. Change Default Password
 ~~~~~~~~~~
-.. code-block:: 
+.. code-block::
 
-   #. Go to User Management
+      1. Go to User Management
    #. Select admin user
    #. Click "Change Password"
    #. Enter new secure password
@@ -83,9 +83,9 @@ Step 4: Explore Features (1 minute)
 ~~~~~~~~~~
 #. Add Your First Patient
 ~~~~~~~~~~
-.. code-block:: 
+.. code-block::
 
-   #. Click "👥 Patients" in navigation
+      1. Click "👥 Patients" in navigation
    #. Click "➕ Add Patient"
    #. Fill required fields:
       - Name: John Doe
@@ -98,9 +98,9 @@ Step 4: Explore Features (1 minute)
 ~~~~~~~~~~
 #. Register a Doctor
 ~~~~~~~~~~
-.. code-block:: 
+.. code-block::
 
-   #. Click "👨‍⚕️ Doctors" in navigation
+      1. Click "👨‍⚕️ Doctors" in navigation
    #. Click "➕ Add Doctor"
    #. Fill required fields:
       - Name: Dr. Sarah Smith
@@ -113,9 +113,9 @@ Step 4: Explore Features (1 minute)
 ~~~~~~~~~~
 #. Schedule an Appointment
 ~~~~~~~~~~
-.. code-block:: 
+.. code-block::
 
-   #. Click "📅 Appointments" in navigation
+      1. Click "📅 Appointments" in navigation
    #. Click "➕ New Appointment"
    #. Select patient: John Doe
    #. Select doctor: Dr. Sarah Smith
@@ -127,9 +127,9 @@ Step 4: Explore Features (1 minute)
 ~~~~~~~~~~
 #. Generate Your First Report
 ~~~~~~~~~~
-.. code-block:: 
+.. code-block::
 
-   #. Click "📊 Reports" in navigation
+      1. Click "📊 Reports" in navigation
    #. Select "Patient Report"
    #. Choose date range: Last 30 days
    #. Click "Generate Report"
@@ -269,7 +269,7 @@ Finance (finance/admin123)
 ~~~~~~~~~~
 .. code-block:: properties
 
-   ==========
+      ==========
    Edit src/main/resources/application.properties
    ==========
    spring.datasource.url=jdbc:h2:file:./medisys_db
@@ -321,7 +321,7 @@ Application Won't Start
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Check Java version
    ==========
    java -version
@@ -350,7 +350,7 @@ Database Issues
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Check database files
    ==========
    ls -la *.db

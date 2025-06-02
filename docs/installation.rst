@@ -35,7 +35,7 @@ Method 1: Pre-built Release (Recommended)
 #### Step 1: Download Release
 .. code-block:: bash
 
-   ==========
+      ==========
    Download latest release from GitHub
    ==========
    wget https://github.com/Mazharuddin-Mohammed/MediSysJava/releases/latest/download/medisys-1.0.0.jar
@@ -49,7 +49,7 @@ curl -L -o medisys-1.0.0.jar https://github.com/Mazharuddin-Mohammed/MediSysJava
 #### Step 2: Run Application
 .. code-block:: bash
 
-   ==========
+      ==========
    Run the application
    ==========
    java -jar medisys-1.0.0.jar
@@ -67,7 +67,7 @@ Method 2: Build from Source
 #### Step 1: Clone Repository
 .. code-block:: bash
 
-   ==========
+      ==========
    Clone the repository
    ==========
    git clone https://github.com/Mazharuddin-Mohammed/MediSysJava.git
@@ -77,7 +77,7 @@ Method 2: Build from Source
 #### Step 2: Build Application
 .. code-block:: bash
 
-   ==========
+      ==========
    Clean and compile
    ==========
    mvn clean compile
@@ -109,7 +109,7 @@ Windows Installation
 #### 1. Install Java JDK 17+
 .. code-block:: powershell
 
-   ==========
+      ==========
    Download from Oracle or use Chocolatey
    ==========
    choco install openjdk17
@@ -124,7 +124,7 @@ javac -version
 #### 2. Install Maven
 .. code-block:: powershell
 
-   ==========
+      ==========
    Using Chocolatey
    ==========
    choco install maven
@@ -138,7 +138,7 @@ mvn -version
 #### 3. Install Git
 .. code-block:: powershell
 
-   ==========
+      ==========
    Using Chocolatey
    ==========
    choco install git
@@ -152,7 +152,7 @@ git --version
 #### 4. Clone and Build
 .. code-block:: powershell
 
-   ==========
+      ==========
    Clone repository
    ==========
    git clone https://github.com/Mazharuddin-Mohammed/MediSysJava.git
@@ -172,7 +172,7 @@ macOS Installation
 #### 1. Install Java JDK 17+
 .. code-block:: bash
 
-   ==========
+      ==========
    Using Homebrew
    ==========
    brew install openjdk@17
@@ -193,7 +193,7 @@ java -version
 #### 2. Install Maven
 .. code-block:: bash
 
-   ==========
+      ==========
    Using Homebrew
    ==========
    brew install maven
@@ -207,7 +207,7 @@ mvn -version
 #### 3. Install Git
 .. code-block:: bash
 
-   ==========
+      ==========
    Using Homebrew
    ==========
    brew install git
@@ -221,7 +221,7 @@ git --version
 #### 4. Clone and Build
 .. code-block:: bash
 
-   ==========
+      ==========
    Clone repository
    ==========
    git clone https://github.com/Mazharuddin-Mohammed/MediSysJava.git
@@ -241,14 +241,14 @@ Linux (Ubuntu/Debian) Installation
 #### 1. Update System
 .. code-block:: bash
 
-   sudo apt update
+      sudo apt update
    sudo apt upgrade -y
 
 
 #### 2. Install Java JDK 17+
 .. code-block:: bash
 
-   ==========
+      ==========
    Install OpenJDK 17
    ==========
    sudo apt install openjdk-17-jdk -y
@@ -270,7 +270,7 @@ source ~/.bashrc
 #### 3. Install Maven
 .. code-block:: bash
 
-   ==========
+      ==========
    Install Maven
    ==========
    sudo apt install maven -y
@@ -284,7 +284,7 @@ mvn -version
 #### 4. Install Git
 .. code-block:: bash
 
-   ==========
+      ==========
    Install Git
    ==========
    sudo apt install git -y
@@ -298,7 +298,7 @@ git --version
 #### 5. Clone and Build
 .. code-block:: bash
 
-   ==========
+      ==========
    Clone repository
    ==========
    git clone https://github.com/Mazharuddin-Mohammed/MediSysJava.git
@@ -329,7 +329,7 @@ PostgreSQL (Production)
 #### 1. Install PostgreSQL
 .. code-block:: bash
 
-   ==========
+      ==========
    Ubuntu/Debian
    ==========
    sudo apt install postgresql postgresql-contrib
@@ -350,7 +350,7 @@ Download from https://www.postgresql.org/download/windows/
 #### 2. Create Database
 .. code-block:: sql
 
-   -- Connect to PostgreSQL
+      -- Connect to PostgreSQL
    sudo -u postgres psql
 
 -- Create database and user
@@ -362,7 +362,7 @@ GRANT ALL PRIVILEGES ON DATABASE medisys TO medisys_user;
 #### 3. Configure Application
 .. code-block:: properties
 
-   ==========
+      ==========
    Edit src/main/resources/application.properties
    ==========
    spring.datasource.url=jdbc:postgresql://localhost:5432/medisys
@@ -380,7 +380,7 @@ Application Properties
 ~~~~~~~~~~
 .. code-block:: properties
 
-   ==========
+      ==========
    Database Configuration
    ==========
    spring.datasource.url=jdbc:h2:file:./medisys_db
@@ -411,7 +411,7 @@ JVM Options
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Memory settings
    ==========
    -Xms512m -Xmx2g
@@ -437,7 +437,7 @@ System properties
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Verify Java
    ==========
    java -version
@@ -467,7 +467,7 @@ Should show: git version 2.x.x or higher
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Navigate to project directory
    ==========
    cd MediSysJava
@@ -500,7 +500,7 @@ Common Issues
 #### Java Version Issues
 .. code-block:: bash
 
-   ==========
+      ==========
    Check Java version
    ==========
    java -version
@@ -515,7 +515,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 #### Maven Issues
 .. code-block:: bash
 
-   ==========
+      ==========
    Clear Maven cache
    ==========
    mvn clean
@@ -534,7 +534,7 @@ mvn clean install -DskipTests
 #### JavaFX Issues
 .. code-block:: bash
 
-   ==========
+      ==========
    If JavaFX modules not found
    ==========
    mvn javafx:run -Djavafx.runtime.path=/path/to/javafx
@@ -548,7 +548,7 @@ Or add to pom.xml
 #### Database Issues
 .. code-block:: bash
 
-   ==========
+      ==========
    Check H2 database files
    ==========
    ls -la *.db
@@ -566,7 +566,7 @@ Error Solutions
 #### "Module not found" Error
 .. code-block:: bash
 
-   ==========
+      ==========
    Add JavaFX modules explicitly
    ==========
    --add-modules javafx.controls,javafx.fxml,javafx.web
@@ -575,7 +575,7 @@ Error Solutions
 #### "Permission denied" Error
 .. code-block:: bash
 
-   ==========
+      ==========
    Make script executable
    ==========
    chmod +x run.sh
@@ -589,7 +589,7 @@ sudo mvn javafx:run
 #### "Port already in use" Error
 .. code-block:: bash
 
-   ==========
+      ==========
    Find process using port
    ==========
    lsof -i :8080

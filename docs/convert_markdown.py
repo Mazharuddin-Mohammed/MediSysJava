@@ -198,9 +198,9 @@ Data access is abstracted through repository interfaces:
 * **Testing support**: Easy mocking for unit tests
 """
     
-    with open('docs/architecture.rst', 'w', encoding='utf-8') as f:
+    with open('architecture.rst', 'w', encoding='utf-8') as f:
         f.write(architecture_content)
-    
+
     # API Reference
     api_content = """API Reference
 =============
@@ -299,18 +299,18 @@ Doctor Entity
     }
 """
     
-    with open('docs/api-reference.rst', 'w', encoding='utf-8') as f:
+    with open('api-reference.rst', 'w', encoding='utf-8') as f:
         f.write(api_content)
-    
+
     # Additional documentation files
     additional_files = {
-        'docs/admin-guide.rst': 'Administration Guide',
-        'docs/security.rst': 'Security Configuration',
-        'docs/deployment.rst': 'Deployment Guide',
-        'docs/troubleshooting.rst': 'Troubleshooting',
-        'docs/changelog.rst': 'Changelog',
-        'docs/license.rst': 'License',
-        'docs/contact.rst': 'Contact Information'
+        'admin-guide.rst': 'Administration Guide',
+        'security.rst': 'Security Configuration',
+        'deployment.rst': 'Deployment Guide',
+        'troubleshooting.rst': 'Troubleshooting',
+        'changelog.rst': 'Changelog',
+        'license.rst': 'License',
+        'contact.rst': 'Contact Information'
     }
     
     for file_path, title in additional_files.items():

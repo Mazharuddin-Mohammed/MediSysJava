@@ -57,14 +57,14 @@ IDE Setup
 #. **Configure Settings**:
    .. code-block:: json
 
-      {
+         {
         "java.home": "/path/to/java17",
         "maven.executable.path": "/path/to/maven/bin/mvn",
         "java.format.settings.url": "config/eclipse-formatter.xml"
       }
       .. code-block::
 
-
+   
 ~~~~~~~~~~
 Environment Variables
 ~~~~~~~~~~
@@ -86,50 +86,49 @@ JavaFX Configuration (if needed)
 ==========
 export JAVAFX_HOME=/path/to/javafx
 export PATH_TO_FX=$JAVAFX_HOME/lib
-.. code-block:: 
-
-   
-   ----------
-   📁 Project Structure
-   ----------
 
 
-MediSysJava/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/medisys/desktop/
-│   │   │       ├── MediSysApp.java          # Main application class
-│   │   │       ├── config/                  # Configuration classes
-│   │   │       ├── controller/              # JavaFX controllers
-│   │   │       ├── model/                   # Data models/entities
-│   │   │       ├── service/                 # Business logic services
-│   │   │       ├── repository/              # Data access layer
-│   │   │       ├── ui/                      # UI components
-│   │   │       │   ├── modules/             # Feature modules
-│   │   │       │   └── components/          # Reusable components
-│   │   │       └── utils/                   # Utility classes
-│   │   └── resources/
-│   │       ├── css/                         # Stylesheets
-│   │       ├── fxml/                        # FXML layouts
-│   │       ├── images/                      # Image resources
-│   │       └── application.properties       # Configuration
-│   └── test/
-│       ├── java/                            # Test classes
-│       └── resources/                       # Test resources
-├── docs/                                    # Documentation
-├── config/                                  # Configuration files
-├── scripts/                                 # Build/deployment scripts
-├── pom.xml                                  # Maven configuration
-├── README.md                                # Project overview
-├── CONTRIBUTING.md                          # Contribution guidelines
-└── .gitignore                              # Git ignore rules
-.. code-block:: 
+----------
+📁 Project Structure
+----------
 
-   
-   ~~~~~~~~~~
-   Key Directories
-   ~~~~~~~~~~
+.. code-block::
+
+      MediSysJava/
+   ├── src/
+   │   ├── main/
+   │   │   ├── java/
+   │   │   │   └── com/medisys/desktop/
+   │   │   │       ├── MediSysApp.java          # Main application class
+   │   │   │       ├── config/                  # Configuration classes
+   │   │   │       ├── controller/              # JavaFX controllers
+   │   │   │       ├── model/                   # Data models/entities
+   │   │   │       ├── service/                 # Business logic services
+   │   │   │       ├── repository/              # Data access layer
+   │   │   │       ├── ui/                      # UI components
+   │   │   │       │   ├── modules/             # Feature modules
+   │   │   │       │   └── components/          # Reusable components
+   │   │   │       └── utils/                   # Utility classes
+   │   │   └── resources/
+   │   │       ├── css/                         # Stylesheets
+   │   │       ├── fxml/                        # FXML layouts
+   │   │       ├── images/                      # Image resources
+   │   │       └── application.properties       # Configuration
+   │   └── test/
+   │       ├── java/                            # Test classes
+   │       └── resources/                       # Test resources
+   ├── docs/                                    # Documentation
+   ├── config/                                  # Configuration files
+   ├── scripts/                                 # Build/deployment scripts
+   ├── pom.xml                                  # Maven configuration
+   ├── README.md                                # Project overview
+   ├── CONTRIBUTING.md                          # Contribution guidelines
+   └── .gitignore                              # Git ignore rules
+
+
+~~~~~~~~~~
+Key Directories
+~~~~~~~~~~
 
 #### ``/src/main/java/com/medisys/desktop/``
 * **``model/``**: Entity classes (Patient, Doctor, Appointment, etc.)
@@ -154,28 +153,28 @@ Design Patterns
 ~~~~~~~~~~
 
 #### Model-View-Controller (MVC)
+.. code-block::
 
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│    View     │    │ Controller  │    │    Model    │
-│   (FXML)    │◄──►│   (Java)    │◄──►│   (Entity)  │
-│             │    │             │    │             │
-└─────────────┘    └─────────────┘    └─────────────┘
-.. code-block:: 
+      ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+   │    View     │    │ Controller  │    │    Model    │
+   │   (FXML)    │◄──►│   (Java)    │◄──►│   (Entity)  │
+   │             │    │             │    │             │
+   └─────────────┘    └─────────────┘    └─────────────┘
 
-   
-   #### Service Layer Pattern
 
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│ Controller  │    │   Service   │    │ Repository  │
-│             │◄──►│   Layer     │◄──►│    Layer    │
-│             │    │             │    │             │
-└─────────────┘    └─────────────┘    └─────────────┘
-.. code-block:: 
+#### Service Layer Pattern
+.. code-block::
 
-   
-   ~~~~~~~~~~
-   Layer Responsibilities
-   ~~~~~~~~~~
+      ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+   │ Controller  │    │   Service   │    │ Repository  │
+   │             │◄──►│   Layer     │◄──►│    Layer    │
+   │             │    │             │    │             │
+   └─────────────┘    └─────────────┘    └─────────────┘
+
+
+~~~~~~~~~~
+Layer Responsibilities
+~~~~~~~~~~
 
 #### Presentation Layer (UI)
 * **JavaFX Controllers**: Handle user interactions
@@ -226,20 +225,21 @@ Git Workflow
 ~~~~~~~~~~
 
 #### Branch Strategy
+.. code-block::
 
-master (main)
-├── develop
-│   ├── feature/patient-management
-│   ├── feature/appointment-system
-│   └── feature/reporting-module
-├── hotfix/security-patch
-└── release/v1.1.0
-.. code-block:: 
+      master (main)
+   ├── develop
+   │   ├── feature/patient-management
+   │   ├── feature/appointment-system
+   │   └── feature/reporting-module
+   ├── hotfix/security-patch
+   └── release/v1.1.0
 
-   
-   #### Commit Convention
 
-type(scope): description
+#### Commit Convention
+.. code-block::
+
+      type(scope): description
 
 feat(patient): add photo upload functionality
 fix(appointment): resolve scheduling conflict issue
@@ -247,31 +247,31 @@ docs(readme): update installation instructions
 style(ui): improve button styling consistency
 refactor(service): optimize patient search algorithm
 test(patient): add unit tests for patient service
-.. code-block:: 
 
-   
-   ~~~~~~~~~~
-   Development Process
-   ~~~~~~~~~~
+
+~~~~~~~~~~
+Development Process
+~~~~~~~~~~
 
 #### 1. Setup Development Branch
-bash
-==========
-Create feature branch
-==========
-git checkout -b feature/new-feature-name
+.. code-block:: bash
+
+      ==========
+   Create feature branch
+   ==========
+   git checkout -b feature/new-feature-name
 
 ==========
 Keep branch updated
 ==========
 git pull origin develop
 git merge develop
-.. code-block:: 
 
-   
-   #### 2. Development Cycle
-   bash
-   ==========
+
+#### 2. Development Cycle
+.. code-block:: bash
+
+      ==========
    Make changes
    ==========
    ==========
@@ -292,12 +292,12 @@ Commit changes
 ==========
 git add .
 git commit -m "feat(module): add new feature"
-.. code-block:: 
 
-   
-   #### 3. Code Review Process
-   bash
-   ==========
+
+#### 3. Code Review Process
+.. code-block:: bash
+
+      ==========
    Push branch
    ==========
    git push origin feature/new-feature-name
@@ -311,21 +311,21 @@ Address review comments
 ==========
 Merge after approval
 ==========
-.. code-block:: 
 
-   
-   ----------
-   💻 Coding Standards
-   ----------
+
+----------
+💻 Coding Standards
+----------
 
 ~~~~~~~~~~
 Java Code Style
 ~~~~~~~~~~
 
 #### Naming Conventions
-java
-// Classes: PascalCase
-public class PatientService { }
+.. code-block:: java
+
+      // Classes: PascalCase
+   public class PatientService { }
 
 // Methods: camelCase
 public Patient findPatientById(Long id) { }
@@ -338,12 +338,12 @@ private static final int MAX_RETRY_ATTEMPTS = 3;
 
 // Packages: lowercase
 package com.medisys.desktop.service;
-.. code-block:: 
 
-   
-   #### Code Structure
-   java
-   /**
+
+#### Code Structure
+.. code-block:: java
+
+      /**
     * Service class for managing patient operations.
     * 
     * @author Dr. Mazharuddin Mohammed
@@ -352,15 +352,15 @@ package com.medisys.desktop.service;
     */
    @Service
    public class PatientService {
-       
+
        private static final Logger logger = LoggerFactory.getLogger(PatientService.class);
-       
+
        private final PatientRepository patientRepository;
-       
+
        public PatientService(PatientRepository patientRepository) {
            this.patientRepository = patientRepository;
        }
-       
+
        /**
         * Finds a patient by their unique identifier.
         * 
@@ -371,7 +371,7 @@ package com.medisys.desktop.service;
        public Optional<Patient.. note::
       findById(Long id) {
            validateId(id);
-           
+
            try {
                return patientRepository.findById(id);
            } catch (Exception e) {
@@ -379,14 +379,13 @@ package com.medisys.desktop.service;
                throw new ServiceException("Failed to find patient", e);
            }
        }
-       
+
        private void validateId(Long id) {
            if (id == null || id <= 0) {
                throw new IllegalArgumentException("Patient ID must be positive");
            }
        }
    }
-   .. code-block:: 
 
 
 ~~~~~~~~~~
@@ -394,45 +393,46 @@ JavaFX Guidelines
 ~~~~~~~~~~
 
 #### Controller Structure
-java
-@Component
-public class PatientController implements Initializable {
-    
-    @FXML private TableView<Patient.. note::
-   patientTable;
-    @FXML private TextField searchField;
-    @FXML private Button addButton;
-    
-    private final PatientService patientService;
-    private final ObservableList<Patient.. note::
-   patients = FXCollections.observableArrayList();
-    
-    public PatientController(PatientService patientService) {
-        this.patientService = patientService;
-    }
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        setupTable();
-        setupEventHandlers();
-        loadPatients();
-    }
-    
-    @FXML
-    private void handleAddPatient() {
-        // Event handler implementation
-    }
-    
-    private void setupTable() {
-        // Table setup logic
-    }
-}
-.. code-block:: 
+.. code-block:: java
 
-   
-   #### FXML Best Practices
-   xml
-   <?xml version="1.0" encoding="UTF-8"?>
+      @Component
+   public class PatientController implements Initializable {
+
+       @FXML private TableView<Patient.. note::
+      patientTable;
+       @FXML private TextField searchField;
+       @FXML private Button addButton;
+
+       private final PatientService patientService;
+       private final ObservableList<Patient.. note::
+      patients = FXCollections.observableArrayList();
+
+       public PatientController(PatientService patientService) {
+           this.patientService = patientService;
+       }
+
+       @Override
+       public void initialize(URL location, ResourceBundle resources) {
+           setupTable();
+           setupEventHandlers();
+           loadPatients();
+       }
+
+       @FXML
+       private void handleAddPatient() {
+           // Event handler implementation
+       }
+
+       private void setupTable() {
+           // Table setup logic
+       }
+   }
+
+
+#### FXML Best Practices
+.. code-block:: xml
+
+      <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -455,108 +455,108 @@ public class PatientController implements Initializable {
     </TableView>
     
 </VBox>
-.. code-block:: 
 
-   
-   ----------
-   🧪 Testing Guidelines
-   ----------
+
+----------
+🧪 Testing Guidelines
+----------
 
 ~~~~~~~~~~
 Test Structure
 ~~~~~~~~~~
 
 #### Unit Tests
-java
-@ExtendWith(MockitoExtension.class)
-class PatientServiceTest {
-    
-    @Mock
-    private PatientRepository patientRepository;
-    
-    @InjectMocks
-    private PatientService patientService;
-    
-    @Test
-    @DisplayName("Should find patient by valid ID")
-    void shouldFindPatientByValidId() {
-        // Given
-        Long patientId = 1L;
-        Patient expectedPatient = createTestPatient();
-        when(patientRepository.findById(patientId))
-            .thenReturn(Optional.of(expectedPatient));
-        
-        // When
-        Optional<Patient.. note::
-   result = patientService.findById(patientId);
-        
-        // Then
-        assertThat(result).isPresent();
-        assertThat(result.get().getId()).isEqualTo(patientId);
-        verify(patientRepository).findById(patientId);
-    }
-    
-    @Test
-    @DisplayName("Should throw exception for null ID")
-    void shouldThrowExceptionForNullId() {
-        // When & Then
-        assertThatThrownBy(() -.. note::
-   patientService.findById(null))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("Patient ID must be positive");
-    }
-    
-    private Patient createTestPatient() {
-        return Patient.builder()
-            .id(1L)
-            .name("John Doe")
-            .email("john@example.com")
-            .build();
-    }
-}
-.. code-block:: 
+.. code-block:: java
 
-   
-   #### Integration Tests
-   java
-   @SpringBootTest
+      @ExtendWith(MockitoExtension.class)
+   class PatientServiceTest {
+
+       @Mock
+       private PatientRepository patientRepository;
+
+       @InjectMocks
+       private PatientService patientService;
+
+       @Test
+       @DisplayName("Should find patient by valid ID")
+       void shouldFindPatientByValidId() {
+           // Given
+           Long patientId = 1L;
+           Patient expectedPatient = createTestPatient();
+           when(patientRepository.findById(patientId))
+               .thenReturn(Optional.of(expectedPatient));
+
+           // When
+           Optional<Patient.. note::
+      result = patientService.findById(patientId);
+
+           // Then
+           assertThat(result).isPresent();
+           assertThat(result.get().getId()).isEqualTo(patientId);
+           verify(patientRepository).findById(patientId);
+       }
+
+       @Test
+       @DisplayName("Should throw exception for null ID")
+       void shouldThrowExceptionForNullId() {
+           // When & Then
+           assertThatThrownBy(() -.. note::
+      patientService.findById(null))
+               .isInstanceOf(IllegalArgumentException.class)
+               .hasMessage("Patient ID must be positive");
+       }
+
+       private Patient createTestPatient() {
+           return Patient.builder()
+               .id(1L)
+               .name("John Doe")
+               .email("john@example.com")
+               .build();
+       }
+   }
+
+
+#### Integration Tests
+.. code-block:: java
+
+      @SpringBootTest
    @TestPropertySource(locations = "classpath:application-test.properties")
    class PatientServiceIntegrationTest {
-       
+
        @Autowired
        private PatientService patientService;
-       
+
        @Autowired
        private TestEntityManager entityManager;
-       
+
        @Test
        @Transactional
        void shouldSaveAndRetrievePatient() {
            // Given
            Patient patient = createTestPatient();
-           
+
            // When
            Patient savedPatient = patientService.save(patient);
            entityManager.flush();
-           
+
            Optional<Patient.. note::
       retrievedPatient = patientService.findById(savedPatient.getId());
-           
+
            // Then
            assertThat(retrievedPatient).isPresent();
            assertThat(retrievedPatient.get().getName()).isEqualTo(patient.getName());
        }
    }
-   .. code-block:: 
 
 
 ~~~~~~~~~~
 Test Categories
 ~~~~~~~~~~
-java
-// Unit Tests - Fast, isolated
-@Tag("unit")
-class PatientServiceTest { }
+.. code-block:: java
+
+      // Unit Tests - Fast, isolated
+   @Tag("unit")
+   class PatientServiceTest { }
 
 // Integration Tests - Database interactions
 @Tag("integration")
@@ -569,14 +569,14 @@ class PatientControllerTest { }
 // Performance Tests - Load testing
 @Tag("performance")
 class PatientServicePerformanceTest { }
-.. code-block:: 
 
-   
-   ~~~~~~~~~~
-   Running Tests
-   ~~~~~~~~~~
-   bash
-   ==========
+
+~~~~~~~~~~
+Running Tests
+~~~~~~~~~~
+.. code-block:: bash
+
+      ==========
    Run all tests
    ==========
    mvn test
@@ -601,85 +601,84 @@ mvn test -Dtest=PatientServiceTest
 Run specific test method
 ==========
 mvn test -Dtest=PatientServiceTest#shouldFindPatientByValidId
-.. code-block:: 
 
-   
-   ----------
-   🗄️ Database Development
-   ----------
+
+----------
+🗄️ Database Development
+----------
 
 ~~~~~~~~~~
 Entity Design
 ~~~~~~~~~~
-java
-@Entity
-@Table(name = "patients")
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class Patient {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(nullable = false, length = 100)
-    private String name;
-    
-    @Column(unique = true, length = 50)
-    private String email;
-    
-    @Column(length = 20)
-    private String phone;
-    
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-    
-    @Column(name = "date_of_birth")
-    private LocalDate dateOfBirth;
-    
-    @CreationTimestamp
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-    
-    @UpdateTimestamp
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
-    
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    private List<Appointment.. note::
-   appointments = new ArrayList<>();
-}
-.. code-block:: 
+.. code-block:: java
 
-   
-   ~~~~~~~~~~
-   Repository Pattern
-   ~~~~~~~~~~
-   java
-   @Repository
+      @Entity
+   @Table(name = "patients")
+   @Data
+   @Builder
+   @NoArgsConstructor
+   @AllArgsConstructor
+   public class Patient {
+
+       @Id
+       @GeneratedValue(strategy = GenerationType.IDENTITY)
+       private Long id;
+
+       @Column(nullable = false, length = 100)
+       private String name;
+
+       @Column(unique = true, length = 50)
+       private String email;
+
+       @Column(length = 20)
+       private String phone;
+
+       @Enumerated(EnumType.STRING)
+       private Gender gender;
+
+       @Column(name = "date_of_birth")
+       private LocalDate dateOfBirth;
+
+       @CreationTimestamp
+       @Column(name = "created_at")
+       private LocalDateTime createdAt;
+
+       @UpdateTimestamp
+       @Column(name = "updated_at")
+       private LocalDateTime updatedAt;
+
+       @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+       private List<Appointment.. note::
+      appointments = new ArrayList<>();
+   }
+
+
+~~~~~~~~~~
+Repository Pattern
+~~~~~~~~~~
+.. code-block:: java
+
+      @Repository
    public interface PatientRepository extends JpaRepository<Patient, Long.. note::
       {
-       
+
        Optional<Patient.. note::
       findByEmail(String email);
-       
+
        List<Patient.. note::
       findByNameContainingIgnoreCase(String name);
-       
+
        @Query("SELECT p FROM Patient p WHERE p.dateOfBirth BETWEEN :startDate AND :endDate")
        List<Patient.. note::
       findByDateOfBirthBetween(
            @Param("startDate") LocalDate startDate,
            @Param("endDate") LocalDate endDate
        );
-       
+
        @Modifying
        @Query("UPDATE Patient p SET p.active = false WHERE p.id = :id")
        void deactivatePatient(@Param("id") Long id);
    }
-   .. code-block:: 
 
 
 ----------
@@ -689,12 +688,13 @@ public class Patient {
 ~~~~~~~~~~
 CSS Styling
 ~~~~~~~~~~
-css
-/* Main application styles */
-.main-container {
-    -fx-background-color: #f8f9fa;
-    -fx-padding: 20px;
-}
+.. code-block:: css
+
+      /* Main application styles */
+   .main-container {
+       -fx-background-color: #f8f9fa;
+       -fx-padding: 20px;
+   }
 
 .toolbar {
     -fx-spacing: 10px;
@@ -719,43 +719,43 @@ css
     -fx-border-color: #e5e7eb;
     -fx-border-radius: 4px;
 }
-.. code-block:: 
 
-   
-   ~~~~~~~~~~
-   Component Development
-   ~~~~~~~~~~
-   java
-   public class PatientCard extends VBox {
-       
+
+~~~~~~~~~~
+Component Development
+~~~~~~~~~~
+.. code-block:: java
+
+      public class PatientCard extends VBox {
+
        private final Patient patient;
        private final Label nameLabel;
        private final Label phoneLabel;
        private final ImageView photoView;
-       
+
        public PatientCard(Patient patient) {
            this.patient = patient;
            this.nameLabel = new Label();
            this.phoneLabel = new Label();
            this.photoView = new ImageView();
-           
+
            initializeComponents();
            setupLayout();
            updateData();
        }
-       
+
        private void initializeComponents() {
            getStyleClass().add("patient-card");
            setSpacing(8);
            setPadding(new Insets(12));
        }
-       
+
        private void setupLayout() {
            HBox header = new HBox(8);
            header.getChildren().addAll(photoView, createInfoBox());
            getChildren().add(header);
        }
-       
+
        private VBox createInfoBox() {
            VBox infoBox = new VBox(4);
            nameLabel.getStyleClass().add("patient-name");
@@ -763,14 +763,13 @@ css
            infoBox.getChildren().addAll(nameLabel, phoneLabel);
            return infoBox;
        }
-       
+
        private void updateData() {
            nameLabel.setText(patient.getName());
            phoneLabel.setText(patient.getPhone());
            // Load and set photo
        }
    }
-   .. code-block:: 
 
 
 ----------
@@ -780,11 +779,12 @@ css
 ~~~~~~~~~~
 Building for Production
 ~~~~~~~~~~
-bash
-==========
-Clean and package
-==========
-mvn clean package
+.. code-block:: bash
+
+      ==========
+   Clean and package
+   ==========
+   mvn clean package
 
 ==========
 Create executable JAR
@@ -795,14 +795,14 @@ mvn package -Dmaven.test.skip=true
 Build with all dependencies
 ==========
 mvn clean compile assembly:single
-.. code-block:: 
 
-   
-   ~~~~~~~~~~
-   Docker Deployment
-   ~~~~~~~~~~
-   dockerfile
-   FROM openjdk:17-jre-slim
+
+~~~~~~~~~~
+Docker Deployment
+~~~~~~~~~~
+.. code-block:: dockerfile
+
+      FROM openjdk:17-jre-slim
 
 WORKDIR /app
 COPY target/medisys-1.0.0.jar app.jar
@@ -811,14 +811,14 @@ COPY src/main/resources/application-prod.properties application.properties
 EXPOSE 8080
 
 CMD ["java", "-jar", "app.jar"]
-.. code-block:: 
 
-   
-   ~~~~~~~~~~
-   Environment Configuration
-   ~~~~~~~~~~
-   properties
-   ==========
+
+~~~~~~~~~~
+Environment Configuration
+~~~~~~~~~~
+.. code-block:: properties
+
+      ==========
    Production settings
    ==========
    spring.profiles.active=production

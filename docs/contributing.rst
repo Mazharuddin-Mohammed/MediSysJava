@@ -61,11 +61,11 @@ Quick Start
 #. **Clone your fork** locally:
    .. code-block:: bash
 
-      git clone https://github.com/YOUR_USERNAME/MediSysJava.git
+         git clone https://github.com/YOUR_USERNAME/MediSysJava.git
       cd MediSysJava
       .. code-block::
 
-#. **Set up upstream remote**:
+   3. **Set up upstream remote**:
    ````bash
    git remote add upstream https://github.com/Mazharuddin-Mohammed/MediSysJava.git
    `````
@@ -129,12 +129,11 @@ mvn test -Dtest=PatientServiceTest
 Run with coverage
 ==========
 mvn test jacoco:report
-.. code-block:: 
 
-   
-   ----------
-   📝 Contributing Guidelines
-   ----------
+
+----------
+📝 Contributing Guidelines
+----------
 
 ~~~~~~~~~~
 Types of Contributions
@@ -183,18 +182,18 @@ Contribution Workflow
 ~~~~~~~~~~
 Branch Naming Convention
 ~~~~~~~~~~
+.. code-block::
 
-feature/patient-photo-upload
-bugfix/appointment-scheduling-error
-hotfix/security-vulnerability
-docs/contributing-guide
-test/patient-service-coverage
-.. code-block:: 
+      feature/patient-photo-upload
+   bugfix/appointment-scheduling-error
+   hotfix/security-vulnerability
+   docs/contributing-guide
+   test/patient-service-coverage
 
-   
-   ----------
-   🔄 Pull Request Process
-   ----------
+
+----------
+🔄 Pull Request Process
+----------
 
 ~~~~~~~~~~
 Before Submitting
@@ -209,11 +208,12 @@ Before Submitting
 ~~~~~~~~~~
 PR Template
 ~~~~~~~~~~
-markdown
-----------
-Description
-----------
-Brief description of changes made
+.. code-block:: markdown
+
+      ----------
+   Description
+   ----------
+   Brief description of changes made
 
 ----------
 Type of Change
@@ -243,17 +243,16 @@ Checklist
 * [ ] Self-review completed
 * [ ] Documentation updated
 * [ ] Tests added/updated
-.. code-block:: 
 
-   
-   ~~~~~~~~~~
-   Review Process
-   ~~~~~~~~~~
-   #. **Automated checks** must pass (CI/CD pipeline)
-   #. **Code review** by at least one maintainer
-   #. **Testing verification** in development environment
-   #. **Documentation review** for completeness
-   #. **Final approval** and merge by maintainer
+
+~~~~~~~~~~
+Review Process
+~~~~~~~~~~
+#. **Automated checks** must pass (CI/CD pipeline)
+#. **Code review** by at least one maintainer
+#. **Testing verification** in development environment
+#. **Documentation review** for completeness
+#. **Final approval** and merge by maintainer
 
 ----------
 💻 Coding Standards
@@ -294,32 +293,32 @@ JavaFX Guidelines
 ~~~~~~~~~~
 Test Structure
 ~~~~~~~~~~
-java
-@Test
-@DisplayName("Should find patient by valid ID")
-void shouldFindPatientByValidId() {
-    // Given
-    Long patientId = 1L;
-    Patient expectedPatient = createTestPatient();
-    
-    // When
-    Optional<Patient.. note::
-   result = patientService.findById(patientId);
-    
-    // Then
-    assertThat(result).isPresent();
-    assertThat(result.get().getId()).isEqualTo(patientId);
-}
-.. code-block:: 
+.. code-block:: java
 
-   
-   ~~~~~~~~~~
-   Testing Requirements
-   ~~~~~~~~~~
-   * **Unit tests**: Minimum 80% code coverage
-   * **Integration tests**: For service layer interactions
-   * **UI tests**: For critical user workflows
-   * **Performance tests**: For data-intensive operations
+      @Test
+   @DisplayName("Should find patient by valid ID")
+   void shouldFindPatientByValidId() {
+       // Given
+       Long patientId = 1L;
+       Patient expectedPatient = createTestPatient();
+
+       // When
+       Optional<Patient.. note::
+      result = patientService.findById(patientId);
+
+       // Then
+       assertThat(result).isPresent();
+       assertThat(result.get().getId()).isEqualTo(patientId);
+   }
+
+
+~~~~~~~~~~
+Testing Requirements
+~~~~~~~~~~
+* **Unit tests**: Minimum 80% code coverage
+* **Integration tests**: For service layer interactions
+* **UI tests**: For critical user workflows
+* **Performance tests**: For data-intensive operations
 
 ~~~~~~~~~~
 Test Categories
@@ -344,34 +343,35 @@ Code Documentation
 ~~~~~~~~~~
 Documentation Standards
 ~~~~~~~~~~
-java
-/**
- * Retrieves patient information by ID with medical history.
- * 
- * @param patientId the unique identifier for the patient
- * @param includeMedicalHistory whether to include medical history
- * @return Optional containing patient if found, empty otherwise
- * @throws IllegalArgumentException if patientId is null or negative
- * @since 1.2.0
- */
-public Optional<Patient.. note::
-   findPatientById(Long patientId, boolean includeMedicalHistory) {
-    // Implementation
-}
-.. code-block:: 
+.. code-block:: java
 
-   
-   ----------
-   🐛 Issue Reporting
-   ----------
+      /**
+    * Retrieves patient information by ID with medical history.
+    * 
+    * @param patientId the unique identifier for the patient
+    * @param includeMedicalHistory whether to include medical history
+    * @return Optional containing patient if found, empty otherwise
+    * @throws IllegalArgumentException if patientId is null or negative
+    * @since 1.2.0
+    */
+   public Optional<Patient.. note::
+      findPatientById(Long patientId, boolean includeMedicalHistory) {
+       // Implementation
+   }
+
+
+----------
+🐛 Issue Reporting
+----------
 
 ~~~~~~~~~~
 Bug Reports
 ~~~~~~~~~~
 Use the bug report template:
-markdown
-**Bug Description**
-Clear description of the bug
+.. code-block:: markdown
+
+      **Bug Description**
+   Clear description of the bug
 
 **Steps to Reproduce**
 #. Go to '...'
@@ -391,15 +391,15 @@ What actually happens
 
 **Screenshots**
 Add screenshots if applicable
-.. code-block:: 
 
-   
-   ~~~~~~~~~~
-   Feature Requests
-   ~~~~~~~~~~
-   Use the feature request template:
-   markdown
-   **Feature Description**
+
+~~~~~~~~~~
+Feature Requests
+~~~~~~~~~~
+Use the feature request template:
+.. code-block:: markdown
+
+      **Feature Description**
    Clear description of the proposed feature
 
 **Use Case**

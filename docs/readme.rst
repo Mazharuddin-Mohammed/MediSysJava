@@ -179,9 +179,9 @@ Project Overview
 ~~~~~~~~~~
 **System Architecture**
 ~~~~~~~~~~
-.. code-block:: 
+.. code-block::
 
-   ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+      ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
    │   JavaFX GUI    │    │  Spring Boot    │    │   PostgreSQL    │
    │   Controllers   │◄──►│   Services      │◄──►│   Database      │
    └─────────────────┘    └─────────────────┘    └─────────────────┘
@@ -300,14 +300,14 @@ Quick Installation
 #. **Clone the Repository**
 .. code-block:: bash
 
-   git clone https://github.com/your-org/medisys.git
+      git clone https://github.com/your-org/medisys.git
    cd medisys
 
 
 #. **Database Setup**
 .. code-block:: bash
 
-   ==========
+      ==========
    Create PostgreSQL database
    ==========
    sudo -u postgres createdb medisys
@@ -322,7 +322,7 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE medisys TO medisys_us
 #. **Redis Setup (Optional)**
 .. code-block:: bash
 
-   ==========
+      ==========
    Install and start Redis
    ==========
    sudo apt-get install redis-server
@@ -333,7 +333,7 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE medisys TO medisys_us
 #. **Application Configuration**
 .. code-block:: bash
 
-   ==========
+      ==========
    Update database configuration in application.properties
    ==========
    spring.datasource.url=jdbc:postgresql://localhost:5432/medisys
@@ -350,7 +350,7 @@ spring.redis.port=6379
 #. **Build and Run**
 .. code-block:: bash
 
-   ==========
+      ==========
    Compile the application
    ==========
    mvn clean compile
@@ -368,7 +368,7 @@ Docker Installation (Recommended for Production)
 #. **Using Docker Compose**
 .. code-block:: bash
 
-   ==========
+      ==========
    Clone and navigate to project
    ==========
    git clone https://github.com/your-org/medisys.git
@@ -388,7 +388,7 @@ docker-compose logs -f medisys-app
 #. **Manual Docker Setup**
 .. code-block:: bash
 
-   ==========
+      ==========
    Build the application image
    ==========
    docker build -t medisys:latest .
@@ -502,7 +502,7 @@ Running Tests
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Run all tests
    ==========
    mvn test
@@ -548,7 +548,7 @@ Prometheus Metrics
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Application metrics
    ==========
    curl http://localhost:8080/actuator/prometheus
@@ -582,7 +582,7 @@ Environment Configuration
 ~~~~~~~~~~
 .. code-block:: properties
 
-   ==========
+      ==========
    Production application.properties
    ==========
    spring.profiles.active=production
@@ -597,7 +597,7 @@ Performance Tuning
 ~~~~~~~~~~
 .. code-block:: properties
 
-   ==========
+      ==========
    JVM Options for production
    ==========
    -Xms2g -Xmx4g
@@ -630,7 +630,7 @@ Building from Source
 ~~~~~~~~~~
 .. code-block:: bash
 
-   ==========
+      ==========
    Development build
    ==========
    mvn clean compile
