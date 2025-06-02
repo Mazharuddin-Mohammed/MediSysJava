@@ -1,0 +1,39 @@
+/* Custom styles for MediSys documentation */
+
+.wy-nav-content {
+    max-width: 1200px;
+}
+
+.rst-content .admonition {
+    margin: 24px 0;
+}
+
+.rst-content .admonition.note {
+    background-color: #e7f3ff;
+    border-left: 4px solid #2563eb;
+}
+
+.rst-content .admonition.warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+.rst-content img {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wy-side-nav-search {
+    background-color: #2563eb;
+}
+
+.wy-side-nav-search input[type=text] {
+    border-radius: 4px;
+}
+
+.rst-content code.literal {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 3px;
+    padding: 2px 4px;
+}
