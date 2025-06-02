@@ -20,7 +20,6 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.githubpages',
-    'myst_parser',
     'sphinx_copybutton',
 ]
 
@@ -42,7 +41,6 @@ exclude_patterns = [
 # The suffix(es) of source filenames.
 source_suffix = {
     '.rst': None,
-    '.md': 'myst_parser',
 }
 
 # The master toctree document.
@@ -140,22 +138,7 @@ intersphinx_mapping = {
 # -- Options for todo extension ----------------------------------------------
 todo_include_todos = True
 
-# -- Options for MyST parser -------------------------------------------------
-myst_enable_extensions = [
-    "amsmath",
-    "colon_fence",
-    "deflist",
-    "dollarmath",
-    "html_admonition",
-    "html_image",
-    "linkify",
-    "replacements",
-    "smartquotes",
-    "substitution",
-    "tasklist",
-]
-
-myst_url_schemes = ("http", "https", "mailto")
+# MyST parser removed - using RST only for better compatibility
 
 # -- Custom configuration ----------------------------------------------------
 
@@ -242,18 +225,4 @@ autodoc_default_options = {
     'exclude-members': '__weakref__'
 }
 
-# Napoleon settings for Google/NumPy style docstrings
-napoleon_google_docstring = True
-napoleon_numpy_docstring = True
-napoleon_include_init_with_doc = False
-napoleon_include_private_with_doc = False
-napoleon_include_special_with_doc = True
-napoleon_use_admonition_for_examples = False
-napoleon_use_admonition_for_notes = False
-napoleon_use_admonition_for_references = False
-napoleon_use_ivar = False
-napoleon_use_param = True
-napoleon_use_rtype = True
-napoleon_preprocess_types = False
-napoleon_type_aliases = None
-napoleon_attr_annotations = True
+# Napoleon extension removed - using basic Sphinx autodoc only

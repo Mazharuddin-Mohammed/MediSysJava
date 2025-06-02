@@ -5,17 +5,5 @@ sphinx>=7.1.0
 sphinx-rtd-theme>=1.3.0
 sphinx-copybutton>=0.5.2
 
-# Markdown support
-myst-parser>=2.0.0
-
-# Additional Sphinx extensions
-sphinx-design>=0.5.0
-
 # Documentation utilities
 docutils>=0.18.1
-
-# Image processing (for social cards and logos)
-pillow>=10.0.0
-
-# YAML processing
-pyyaml>=6.0.1
