@@ -9,17 +9,13 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3.11"
-    nodejs: "18"
-  commands:
-    # Install system dependencies
-    - apt-get update
-    - apt-get install -y pandoc
-    # Install Python dependencies
-    - pip install -r docs/requirements.txt
-    # Convert markdown files to reStructuredText for Sphinx
-    - python docs/convert_markdown.py
-    # Build documentation
-    - cd docs && make html
+  jobs:
+    post_create_environment:
+      # Install Python dependencies for documentation
+      - pip install -r docs/requirements.txt
+    post_install:
+      # Convert markdown files to reStructuredText for Sphinx
+      - python docs/convert_markdown.py
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:

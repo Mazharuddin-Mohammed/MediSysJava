@@ -24,8 +24,8 @@ def convert_markdown_to_rst(md_content, title):
     md_content = re.sub(r'^# (.*)', r'==========\n\1\n==========', md_content, flags=re.MULTILINE)
     
     # Convert code blocks
-    md_content = re.sub(r'```(\w+)?\n(.*?)\n```', r'.. code-block:: \1\n\n\2\n', md_content, flags=re.DOTALL)
-    md_content = re.sub(r'```\n(.*?)\n```', r'.. code-block::\n\n\1\n', md_content, flags=re.DOTALL)
+    md_content = re.sub(r'```(\w+)\n(.*?)\n```', r'.. code-block:: \1\n\n   \2\n', md_content, flags=re.DOTALL)
+    md_content = re.sub(r'```\n(.*?)\n```', r'.. code-block::\n\n   \1\n', md_content, flags=re.DOTALL)
     
     # Convert inline code
     md_content = re.sub(r'`([^`]+)`', r'``\1``', md_content)
@@ -50,10 +50,25 @@ def convert_markdown_to_rst(md_content, title):
     # Convert images
     md_content = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'.. image:: \2\n   :alt: \1', md_content)
     
-    # Add proper spacing for code blocks
-    md_content = re.sub(r'(\.\. code-block::.*?\n\n)(.*?)(\n\n)', 
-                       lambda m: m.group(1) + '\n'.join('   ' + line for line in m.group(2).split('\n')) + m.group(3),
-                       md_content, flags=re.DOTALL)
+    # Fix code block indentation
+    def fix_code_block_indentation(match):
+        header = match.group(1)
+        code = match.group(2)
+        footer = match.group(3) if len(match.groups()) > 2 else '\n\n'
+
+        # Indent each line of code with 3 spaces
+        indented_lines = []
+        for line in code.split('\n'):
+            if line.strip():  # Only indent non-empty lines
+                indented_lines.append('   ' + line)
+            else:
+                indented_lines.append('')
+
+        return header + '\n'.join(indented_lines) + footer
+
+    # Apply indentation fix to code blocks
+    md_content = re.sub(r'(\.\. code-block::.*?\n\n)(.*?)(\n\n)',
+                       fix_code_block_indentation, md_content, flags=re.DOTALL)
     
     rst_content += md_content
     

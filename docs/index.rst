@@ -34,32 +34,17 @@ Welcome to the comprehensive documentation for **MediSys Hospital Management Sys
 Quick Navigation
 ================
 
-.. grid:: 2
-   :gutter: 3
+**🚀 Quick Start**
+   Get MediSys running in 5 minutes with our :doc:`quick-start` guide.
 
-   .. grid-item-card:: 🚀 Quick Start
-      :link: quick-start
-      :link-type: doc
+**📖 User Manual**
+   Complete user documentation covering all features and modules. See :doc:`user-manual`.
 
-      Get MediSys running in 5 minutes with our quick start guide.
+**🛠️ Installation**
+   Detailed installation instructions for all platforms. See :doc:`installation`.
 
-   .. grid-item-card:: 📖 User Manual
-      :link: user-manual
-      :link-type: doc
-
-      Complete user documentation covering all features and modules.
-
-   .. grid-item-card:: 🛠️ Installation
-      :link: installation
-      :link-type: doc
-
-      Detailed installation instructions for all platforms.
-
-   .. grid-item-card:: 💻 Developer Guide
-      :link: developer-guide
-      :link-type: doc
-
-      Development setup, architecture, and contribution guidelines.
+**💻 Developer Guide**
+   Development setup, architecture, and contribution guidelines. See :doc:`developer-guide`.
 
 System Overview
 ===============
