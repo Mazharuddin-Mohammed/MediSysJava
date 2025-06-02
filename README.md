@@ -470,17 +470,57 @@ mvn clean package assembly:single
 - **Throughput**: 1000+ requests/minute
 - **Memory Usage**: < 2GB under normal load
 
+## 📚 Documentation
+
+### 📖 Comprehensive Documentation
+- **[📋 Contributing Guide](CONTRIBUTING.md)** - Complete contribution guidelines and development setup
+- **[🏠 Wiki Home](docs/wiki/Home.md)** - Central hub for all documentation
+- **[🚀 Installation Guide](docs/wiki/Installation-Guide.md)** - Detailed installation instructions
+- **[👤 User Manual](docs/wiki/User-Manual.md)** - Complete user documentation
+- **[💻 Developer Guide](docs/wiki/Developer-Guide.md)** - Development setup and guidelines
+- **[❓ FAQ](docs/wiki/FAQ.md)** - Frequently asked questions
+
+### 🔗 Quick Links
+- **[System Requirements](docs/wiki/Installation-Guide.md#prerequisites)** - Hardware and software requirements
+- **[Quick Start](docs/wiki/Installation-Guide.md#quick-installation)** - Get up and running in 5 minutes
+- **[User Roles & Permissions](docs/wiki/User-Manual.md#user-management)** - Access control documentation
+- **[API Documentation](docs/wiki/Developer-Guide.md#api-development)** - Service interfaces and APIs
+- **[Troubleshooting](docs/wiki/FAQ.md#technical-issues)** - Common issues and solutions
+
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions from developers, healthcare professionals, and users! Please see our comprehensive documentation for getting started:
 
-### Development Setup
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Ensure all tests pass
-6. Submit a pull request
+### 📋 How to Contribute
+1. **Read** the [Contributing Guide](CONTRIBUTING.md) for detailed guidelines
+2. **Check** existing [issues](https://github.com/Mazharuddin-Mohammed/MediSysJava/issues) and [discussions](https://github.com/Mazharuddin-Mohammed/MediSysJava/discussions)
+3. **Follow** our [Developer Guide](docs/wiki/Developer-Guide.md) for development setup
+4. **Review** our [Code of Conduct](CONTRIBUTING.md#code-of-conduct)
+
+### 🛠️ Development Workflow
+1. **Fork** the repository on GitHub
+2. **Clone** your fork locally
+3. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+4. **Make** your changes following our [coding standards](docs/wiki/Developer-Guide.md#coding-standards)
+5. **Add** tests for new functionality
+6. **Ensure** all tests pass (`mvn test`)
+7. **Commit** your changes (`git commit -m 'feat: add amazing feature'`)
+8. **Push** to your branch (`git push origin feature/amazing-feature`)
+9. **Submit** a pull request
+
+### 🎯 Contribution Areas
+- **🐛 Bug Fixes**: Fix existing functionality issues
+- **✨ New Features**: Patient management, scheduling, reporting enhancements
+- **📚 Documentation**: User guides, API docs, tutorials
+- **🧪 Testing**: Unit tests, integration tests, UI tests
+- **🎨 UI/UX**: Interface improvements and accessibility
+- **🔧 Performance**: Optimization and scalability improvements
+
+### 👥 Community
+- **💬 Discussions**: [GitHub Discussions](https://github.com/Mazharuddin-Mohammed/MediSysJava/discussions)
+- **🐛 Issues**: [Report Bugs](https://github.com/Mazharuddin-Mohammed/MediSysJava/issues)
+- **📧 Email**: mazharuddin.mohammed.official@fmail.com
+- **📱 Phone**: +91-9347607780
 
 ## 📄 License
 
