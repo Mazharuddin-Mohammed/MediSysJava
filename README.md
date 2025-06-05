@@ -4,10 +4,22 @@
 [![JavaFX](https://img.shields.io/badge/JavaFX-22-blue.svg)](https://openjfx.io/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.0-green.svg)](https://spring.io/projects/spring-boot)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16.9-blue.svg)](https://www.postgresql.org/)
+[![Documentation](https://readthedocs.org/projects/medisysjava/badge/?version=latest)](https://medisysjava.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
 **MediSys** is a modern, enterprise-grade healthcare management system featuring a vibrant JavaFX desktop application with comprehensive patient management, clinical workflows, and financial operations. Built with professional-grade architecture and designed for healthcare organizations of all sizes.
+
+## 📚 **Complete Documentation**
+
+**📖 [Read the Full Documentation on Read the Docs](https://medisysjava.readthedocs.io/)**
+
+Our comprehensive documentation includes:
+- **🚀 [Quick Start Guide](https://medisysjava.readthedocs.io/en/latest/quick-start.html)** - Get running in 5 minutes
+- **🛠️ [Installation Guide](https://medisysjava.readthedocs.io/en/latest/installation.html)** - Complete setup instructions
+- **👤 [User Manual](https://medisysjava.readthedocs.io/en/latest/user-manual.html)** - Full feature documentation
+- **💻 [Developer Guide](https://medisysjava.readthedocs.io/en/latest/developer-guide.html)** - Development and contribution guide
+- **❓ [FAQ](https://medisysjava.readthedocs.io/en/latest/faq.html)** - Common questions and troubleshooting
 
 ![MediSys Banner](src/main/resources/images/banner.jpg)
 
@@ -472,20 +484,31 @@ mvn clean package assembly:single
 
 ## 📚 Documentation
 
-### 📖 Comprehensive Documentation
-- **[📋 Contributing Guide](CONTRIBUTING.md)** - Complete contribution guidelines and development setup
-- **[🏠 Wiki Home](docs/wiki/Home.md)** - Central hub for all documentation
-- **[🚀 Installation Guide](docs/wiki/Installation-Guide.md)** - Detailed installation instructions
-- **[👤 User Manual](docs/wiki/User-Manual.md)** - Complete user documentation
-- **[💻 Developer Guide](docs/wiki/Developer-Guide.md)** - Development setup and guidelines
-- **[❓ FAQ](docs/wiki/FAQ.md)** - Frequently asked questions
+### 📖 **Professional Documentation on Read the Docs**
 
-### 🔗 Quick Links
-- **[System Requirements](docs/wiki/Installation-Guide.md#prerequisites)** - Hardware and software requirements
-- **[Quick Start](docs/wiki/Installation-Guide.md#quick-installation)** - Get up and running in 5 minutes
-- **[User Roles & Permissions](docs/wiki/User-Manual.md#user-management)** - Access control documentation
-- **[API Documentation](docs/wiki/Developer-Guide.md#api-development)** - Service interfaces and APIs
-- **[Troubleshooting](docs/wiki/FAQ.md#technical-issues)** - Common issues and solutions
+**🌐 [Complete Documentation: https://medisysjava.readthedocs.io/](https://medisysjava.readthedocs.io/)**
+
+Our professional documentation is hosted on Read the Docs with:
+- **🔍 Full-text search** across all documentation
+- **📱 Mobile-responsive** design for all devices
+- **📄 Multiple formats** (HTML, PDF, EPUB)
+- **🔄 Auto-updated** from repository changes
+- **🎨 Professional theme** with MediSys branding
+
+### 📋 **Documentation Sections**
+- **[📋 Contributing Guide](CONTRIBUTING.md)** - Complete contribution guidelines and development setup
+- **[🚀 Quick Start](https://medisysjava.readthedocs.io/en/latest/quick-start.html)** - Get running in 5 minutes
+- **[🛠️ Installation Guide](https://medisysjava.readthedocs.io/en/latest/installation.html)** - Detailed installation instructions
+- **[👤 User Manual](https://medisysjava.readthedocs.io/en/latest/user-manual.html)** - Complete user documentation
+- **[💻 Developer Guide](https://medisysjava.readthedocs.io/en/latest/developer-guide.html)** - Development setup and guidelines
+- **[❓ FAQ](https://medisysjava.readthedocs.io/en/latest/faq.html)** - Frequently asked questions
+
+### 🔗 Quick Access Links
+- **[System Requirements](https://medisysjava.readthedocs.io/en/latest/installation.html#prerequisites)** - Hardware and software requirements
+- **[Default Login Credentials](https://medisysjava.readthedocs.io/en/latest/quick-start.html#first-login)** - Get started immediately
+- **[User Roles & Permissions](https://medisysjava.readthedocs.io/en/latest/user-manual.html#user-management)** - Access control documentation
+- **[API Documentation](https://medisysjava.readthedocs.io/en/latest/developer-guide.html#api-development)** - Service interfaces and APIs
+- **[Troubleshooting](https://medisysjava.readthedocs.io/en/latest/faq.html#technical-issues)** - Common issues and solutions
 
 ## 🤝 Contributing
 
